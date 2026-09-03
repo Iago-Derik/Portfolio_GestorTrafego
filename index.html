@@ -1066,13 +1066,16 @@
 
     gtag('config', 'AW-18426974258');
 
-    function gtag_report_conversion() {
+    function gtag_report_conversion(url) {
+      if (typeof (url) != 'undefined') {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
       gtag('event', 'conversion', {
         'send_to': 'AW-18426974258/hyTtCMnRne0cELKg1dJE',
         'value': 1.0,
         'currency': 'BRL'
       });
-      return true;
+      return false;
     }
   </script>
 </head>
@@ -1101,7 +1104,7 @@
       </nav>
 
       <div class="header__actions">
-        <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary btn--sm header__cta" target="_blank" rel="noopener" onclick="gtag_report_conversion();">
+        <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary btn--sm header__cta" onclick="return gtag_report_conversion(this.href);">
           Falar no WhatsApp
         </a>
         <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNav">
@@ -1122,7 +1125,7 @@
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#agendar">Agendar diagnóstico</a></li>
     </ul>
-    <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener" onclick="gtag_report_conversion();" style="width:100%; justify-content:center;">
+    <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" onclick="return gtag_report_conversion(this.href);" style="width:100%; justify-content:center;">
       Falar no WhatsApp
     </a>
   </nav>
@@ -1142,7 +1145,7 @@
             Eu junto duas coisas que raramente andam juntas: gestão de Meta Ads, Google Ads e TikTok Ads com decisão orientada a número, e o domínio técnico de um desenvolvedor web para que nenhuma venda se perca no caminho entre o anúncio e o carrinho.
           </p>
           <div class="hero__actions reveal" style="animation-delay:.26s">
-            <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener" onclick="gtag_report_conversion();">
+            <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" onclick="return gtag_report_conversion(this.href);">
               Quero escalar minhas vendas
             </a>
             <a href="#metodo" class="btn btn--ghost">Ver metodologia</a>
@@ -1446,7 +1449,7 @@
           <span class="eyebrow" style="justify-content:center;">Vamos conversar</span>
           <h2>Bora fazer um diagnóstico gratuito do seu tráfego?</h2>
           <p>Sem compromisso: eu olho sua conta de anúncios e seu site, e te digo exatamente onde as vendas estão vazando.</p>
-          <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener" onclick="gtag_report_conversion();">
+          <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" onclick="return gtag_report_conversion(this.href);">
             Agendar diagnóstico gratuito
           </a>
         </div>
@@ -1479,7 +1482,7 @@
             <circle cx="17.5" cy="6.5" r="1" />
           </svg>
         </a>
-        <a href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener" onclick="gtag_report_conversion();" aria-label="WhatsApp">
+        <a href="https://wa.me/message/LMMBVSDOUZGTO1" onclick="return gtag_report_conversion(this.href);" aria-label="WhatsApp">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.25-.12-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.13-.16.24-.63.8-.78.96-.14.16-.28.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.46-1.37-1.7-.14-.25 0-.38.11-.5.11-.11.25-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.8-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.45-.6 1.65-1.17.2-.58.2-1.08.14-1.18-.06-.1-.22-.16-.47-.28Z" />
           </svg>
