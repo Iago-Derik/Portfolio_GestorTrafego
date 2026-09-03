@@ -119,6 +119,8 @@
     .section {
       padding: 6.5rem 0;
       scroll-margin-top: calc(var(--header-h) + 1rem);
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 760px;
     }
 
     .case {
@@ -217,7 +219,7 @@
       display: flex;
       align-items: center;
       background: rgba(9, 13, 20, .7);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid transparent;
       transition: border-color .25s ease, background .25s ease;
     }
@@ -355,7 +357,7 @@
       right: 0;
       z-index: 85;
       background: rgba(9, 13, 20, .97);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       padding: 1.4rem 1.5rem 2rem;
       transform: translateY(-8px);
@@ -1521,24 +1523,37 @@
 
       var links = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
       var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); }).filter(Boolean);
-      var getSectionTop = function (section) {
-        return section.getBoundingClientRect().top + window.scrollY;
+      var sectionTops = [];
+      var updateSectionTops = function () {
+        sectionTops = sections.map(function (section) {
+          return section.getBoundingClientRect().top + window.scrollY;
+        });
       };
       var setActive = function () {
         var pos = window.scrollY + 140;
-        var orderedSections = sections.slice().sort(function (a, b) {
-          return getSectionTop(a) - getSectionTop(b);
-        });
-        var current = orderedSections[0];
-        orderedSections.forEach(function (sec) {
-          if (getSectionTop(sec) <= pos) current = sec;
+        var current = sections[0];
+        sectionTops.forEach(function (top, index) {
+          if (top <= pos) current = sections[index];
         });
         links.forEach(function (l) {
           l.classList.toggle('is-active', current && l.getAttribute('href') === '#' + current.id);
         });
       };
+      var activeFrame = 0;
+      var requestActiveUpdate = function () {
+        if (activeFrame) return;
+        activeFrame = requestAnimationFrame(function () {
+          activeFrame = 0;
+          setActive();
+        });
+      };
+      updateSectionTops();
       setActive();
-      window.addEventListener('scroll', setActive, { passive: true });
+      window.addEventListener('resize', function () {
+        updateSectionTops();
+        requestActiveUpdate();
+      }, { passive: true });
+      window.addEventListener('scroll', requestActiveUpdate, { passive: true });
 
       document.getElementById('anoAtual').textContent = new Date().getFullYear();
     })();
