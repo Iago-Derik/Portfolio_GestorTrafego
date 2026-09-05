@@ -7,7 +7,7 @@
   <title>Iago Carvalho — Tráfego Pago Estratégico & Engenharia de Conversão</title>
   <meta name="description" content="Gestão estratégica de tráfego pago (Meta Ads, Google Ads e TikTok Ads) com um diferencial raro: quem cuida da sua campanha também é desenvolvedor web. Rastreamento correto, site rápido, vendas de verdade.">
 
-<!-- Favicon Oficial -->
+  <!-- Favicon Oficial -->
   <link rel="icon" type="image/jpeg" href="imgs/logo.jpg">
   <link rel="shortcut icon" href="imgs/logo.jpg" type="image/jpeg">
   <link rel="apple-touch-icon" href="imgs/logo.jpg">
@@ -90,7 +90,10 @@
       color: inherit;
     }
 
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
       font-family: var(--font-display);
       font-weight: 700;
       line-height: 1.15;
@@ -179,27 +182,36 @@
     }
 
     @keyframes floatDrift1 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate3d(0, 0, 0) rotate(0deg);
       }
+
       50% {
         transform: translate3d(14px, -30px, 0) rotate(8deg);
       }
     }
 
     @keyframes floatDrift2 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate3d(0, 0, 0) rotate(0deg);
       }
+
       50% {
         transform: translate3d(-16px, 26px, 0) rotate(-10deg);
       }
     }
 
     @keyframes floatDrift3 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate3d(0, 0, 0) scale(1);
       }
+
       50% {
         transform: translate3d(-12px, -22px, 0) scale(1.08);
       }
@@ -334,10 +346,13 @@
     }
 
     @keyframes pulseDot {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: scale(1);
         box-shadow: 0 0 0 4px rgba(41, 211, 238, .2);
       }
+
       50% {
         transform: scale(1.15);
         box-shadow: 0 0 0 8px rgba(41, 211, 238, .05);
@@ -555,12 +570,17 @@
     .hero {
       padding: calc(var(--header-h) + 3.8rem) 0 4.5rem;
       position: relative;
+      overflow: hidden;
     }
 
     .hero__grid {
       display: grid;
       gap: 3rem;
       align-items: center;
+    }
+
+    .hero__grid>* {
+      min-width: 0;
     }
 
     .hero__badges {
@@ -662,9 +682,17 @@
       transition: background .2s ease;
     }
 
-    .panel:hover .panel__dot:nth-child(1) { background: #ff5f56; }
-    .panel:hover .panel__dot:nth-child(2) { background: #ffbd2e; }
-    .panel:hover .panel__dot:nth-child(3) { background: #27c93f; }
+    .panel:hover .panel__dot:nth-child(1) {
+      background: #ff5f56;
+    }
+
+    .panel:hover .panel__dot:nth-child(2) {
+      background: #ffbd2e;
+    }
+
+    .panel:hover .panel__dot:nth-child(3) {
+      background: #27c93f;
+    }
 
     .panel__label {
       font-size: .78rem;
@@ -686,8 +714,17 @@
     }
 
     @keyframes pulseGreen {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .4; transform: scale(1.35); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(1.35);
+      }
     }
 
     .panel__metrics {
@@ -764,8 +801,15 @@
     }
 
     @keyframes floatNotice {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
     }
 
     .panel__bubble svg {
@@ -790,8 +834,17 @@
     }
 
     @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: .8; }
-      50% { transform: scale(1.15); opacity: 1; }
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: .8;
+      }
+
+      50% {
+        transform: scale(1.15);
+        opacity: 1;
+      }
     }
 
     /* ============ LINHA HORIZONTAL DINÂMICA (MARQUEE AJUSTADO SEM CORTE) ============ */
@@ -861,6 +914,7 @@
       0% {
         transform: translate3d(0, 0, 0);
       }
+
       100% {
         transform: translate3d(-50%, 0, 0);
       }
@@ -950,6 +1004,7 @@
     .compare__col {
       background: var(--bg-alt);
       padding: 2.2rem 1.9rem;
+      min-width: 0;
       transition: background .25s ease;
     }
 
@@ -1068,6 +1123,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 2rem;
+      min-width: 0;
       transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
       position: relative;
     }
@@ -1150,6 +1206,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 2rem;
+      min-width: 0;
       transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, box-shadow .25s ease;
       position: relative;
     }
@@ -1272,6 +1329,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 2.2rem;
+      min-width: 0;
       overflow: hidden;
       transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     }
@@ -1412,6 +1470,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 2.2rem;
+      min-width: 0;
       position: relative;
       transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     }
@@ -1487,6 +1546,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 2rem;
+      min-width: 0;
       transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     }
 
@@ -1595,8 +1655,13 @@
     }
 
     @keyframes rotateBg {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     .final-cta h2 {
@@ -1803,9 +1868,9 @@
     </div>
     <div class="bg-icon bg-icon--5">
       <svg viewBox="0 0 48 48" fill="none">
-        <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00"/>
-        <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400"/>
-        <circle cx="13" cy="35" r="5" fill="#E37400"/>
+        <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00" />
+        <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400" />
+        <circle cx="13" cy="35" r="5" fill="#E37400" />
       </svg>
     </div>
     <div class="bg-icon bg-icon--6">
@@ -1883,7 +1948,9 @@
           <div class="hero__actions reveal" style="animation-delay:.26s">
             <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener noreferrer" onclick="return gtag_report_conversion(this.href);">
               Quero escalar minhas vendas
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </a>
             <a href="#metodo" class="btn btn--ghost">Conhecer o método</a>
           </div>
@@ -1994,18 +2061,18 @@
             <!-- Google Tag Manager -->
             <div class="ticker-item">
               <svg viewBox="0 0 48 48" fill="none">
-                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8"/>
-                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4"/>
-                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF"/>
+                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8" />
+                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4" />
+                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF" />
               </svg>
               Google Tag Manager (GTM)
             </div>
             <!-- Google Analytics 4 -->
             <div class="ticker-item">
               <svg viewBox="0 0 48 48" fill="none">
-                <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00"/>
-                <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400"/>
-                <circle cx="13" cy="35" r="5" fill="#E37400"/>
+                <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00" />
+                <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400" />
+                <circle cx="13" cy="35" r="5" fill="#E37400" />
               </svg>
               Google Analytics 4 (GA4)
             </div>
@@ -2028,18 +2095,18 @@
             <!-- Supabase & Docker -->
             <div class="ticker-item">
               <svg viewBox="0 0 48 48" fill="none">
-                <path d="M26.5 44c-.9 1-2.5.4-2.5-.9V27.5h16.2c1.7 0 2.6 2.1 1.4 3.3L26.5 44z" fill="#3ECF8E"/>
-                <path d="M21.5 4c.9-1 2.5-.4 2.5.9V20.5H7.8c-1.7 0-2.6-2.1-1.4-3.3L21.5 4z" fill="#249361"/>
+                <path d="M26.5 44c-.9 1-2.5.4-2.5-.9V27.5h16.2c1.7 0 2.6 2.1 1.4 3.3L26.5 44z" fill="#3ECF8E" />
+                <path d="M21.5 4c.9-1 2.5-.4 2.5.9V20.5H7.8c-1.7 0-2.6-2.1-1.4-3.3L21.5 4z" fill="#249361" />
               </svg>
               Supabase & Docker
             </div>
             <!-- LinkedIn -->
             <div class="ticker-item">
               <svg viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="4" width="40" height="40" rx="8" fill="#0A66C2"/>
-                <circle cx="15" cy="14" r="3.5" fill="#FFFFFF"/>
-                <rect x="11.5" y="19.5" width="7" height="17" fill="#FFFFFF"/>
-                <path d="M22.5 19.5h6.6v2.4h.1c.9-1.7 3.1-2.9 5.8-2.9 6.2 0 7.3 4.1 7.3 9.4V36.5h-7v-7.9c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.2v8h-7.2V19.5z" fill="#FFFFFF"/>
+                <rect x="4" y="4" width="40" height="40" rx="8" fill="#0A66C2" />
+                <circle cx="15" cy="14" r="3.5" fill="#FFFFFF" />
+                <rect x="11.5" y="19.5" width="7" height="17" fill="#FFFFFF" />
+                <path d="M22.5 19.5h6.6v2.4h.1c.9-1.7 3.1-2.9 5.8-2.9 6.2 0 7.3 4.1 7.3 9.4V36.5h-7v-7.9c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.2v8h-7.2V19.5z" fill="#FFFFFF" />
               </svg>
               LinkedIn
             </div>
@@ -2076,17 +2143,17 @@
             </div>
             <div class="ticker-item">
               <svg viewBox="0 0 48 48" fill="none">
-                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8"/>
-                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4"/>
-                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF"/>
+                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8" />
+                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4" />
+                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF" />
               </svg>
               Google Tag Manager (GTM)
             </div>
             <div class="ticker-item">
               <svg viewBox="0 0 48 48" fill="none">
-                <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00"/>
-                <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400"/>
-                <circle cx="13" cy="35" r="5" fill="#E37400"/>
+                <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00" />
+                <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400" />
+                <circle cx="13" cy="35" r="5" fill="#E37400" />
               </svg>
               Google Analytics 4 (GA4)
             </div>
@@ -2106,17 +2173,17 @@
             </div>
             <div class="ticker-item">
               <svg viewBox="0 0 48 48" fill="none">
-                <path d="M26.5 44c-.9 1-2.5.4-2.5-.9V27.5h16.2c1.7 0 2.6 2.1 1.4 3.3L26.5 44z" fill="#3ECF8E"/>
-                <path d="M21.5 4c.9-1 2.5-.4 2.5.9V20.5H7.8c-1.7 0-2.6-2.1-1.4-3.3L21.5 4z" fill="#249361"/>
+                <path d="M26.5 44c-.9 1-2.5.4-2.5-.9V27.5h16.2c1.7 0 2.6 2.1 1.4 3.3L26.5 44z" fill="#3ECF8E" />
+                <path d="M21.5 4c.9-1 2.5-.4 2.5.9V20.5H7.8c-1.7 0-2.6-2.1-1.4-3.3L21.5 4z" fill="#249361" />
               </svg>
               Supabase & Docker
             </div>
             <div class="ticker-item">
               <svg viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="4" width="40" height="40" rx="8" fill="#0A66C2"/>
-                <circle cx="15" cy="14" r="3.5" fill="#FFFFFF"/>
-                <rect x="11.5" y="19.5" width="7" height="17" fill="#FFFFFF"/>
-                <path d="M22.5 19.5h6.6v2.4h.1c.9-1.7 3.1-2.9 5.8-2.9 6.2 0 7.3 4.1 7.3 9.4V36.5h-7v-7.9c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.2v8h-7.2V19.5z" fill="#FFFFFF"/>
+                <rect x="4" y="4" width="40" height="40" rx="8" fill="#0A66C2" />
+                <circle cx="15" cy="14" r="3.5" fill="#FFFFFF" />
+                <rect x="11.5" y="19.5" width="7" height="17" fill="#FFFFFF" />
+                <path d="M22.5 19.5h6.6v2.4h.1c.9-1.7 3.1-2.9 5.8-2.9 6.2 0 7.3 4.1 7.3 9.4V36.5h-7v-7.9c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.2v8h-7.2V19.5z" fill="#FFFFFF" />
               </svg>
               LinkedIn
             </div>
@@ -2259,9 +2326,9 @@
             <div class="stack-card__header">
               <div class="stack-card__icon">
                 <svg viewBox="0 0 48 48" fill="none">
-                  <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8"/>
-                  <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4"/>
-                  <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF"/>
+                  <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8" />
+                  <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4" />
+                  <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF" />
                 </svg>
               </div>
               <div>
@@ -2353,9 +2420,9 @@
           <article class="service reveal-on-scroll">
             <div class="service__icon">
               <svg viewBox="0 0 48 48" fill="none">
-                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8"/>
-                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4"/>
-                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF"/>
+                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8" />
+                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4" />
+                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF" />
               </svg>
             </div>
             <h3>Rastreamento & Web Analytics</h3>
@@ -2529,19 +2596,27 @@
             <p>Para empresas que já possuem site ou vendem diretamente pelo WhatsApp e precisam de um fluxo ininterrupto de novos leads qualificados.</p>
             <div class="plan-card__features">
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Gestão completa de Meta Ads e Google Ads
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Auditoria de públicos e palavras-chave
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Relatórios semanais de desempenho
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Ajustes e testes contínuos de criativos
               </div>
             </div>
@@ -2557,19 +2632,27 @@
             <p>A solução completa de ponta a ponta: crio a sua página de alta conversão, configuro o tracking e gerencio o tráfego pago com foco em ROI.</p>
             <div class="plan-card__features">
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Landing Page ultrarrápida sob medida
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Implementação de GTM Server-Side + Meta CAPI
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Campanhas completas no Meta, Google e TikTok
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Otimizações de velocidade e conversão contínuas
               </div>
             </div>
@@ -2584,19 +2667,27 @@
             <p>Para quem já tem gestor interno ou agência, mas precisa resolver urgentemente a lentidão da página e o rastreamento quebrado de dados.</p>
             <div class="plan-card__features">
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Desenvolvimento de página em código limpo
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Instalação profissional de GA4 e GTM
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Deduplicação de Pixel e API de Conversões
               </div>
               <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
                 Garantia de carregamento abaixo de 2s
               </div>
             </div>
@@ -2619,35 +2710,45 @@
         <div class="faq reveal-on-scroll">
           <details class="faq__item" open>
             <summary>Quanto preciso investir em anúncios no início?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
             </summary>
             <div class="faq__answer">Dá para começar a validar com orçamentos enxutos (a partir de R$ 15 a R$ 25 por dia nas plataformas). O foco nas primeiras semanas é obter inteligência de dados, validar mensagens e encontrar o custo por lead ideal antes de acelerar a verba. Definimos esse valor estrategicamente no diagnóstico.</div>
           </details>
 
           <details class="faq__item">
             <summary>Por que ter um site rápido aumenta o lucro dos anúncios?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
             </summary>
             <div class="faq__answer">Quando alguém clica no seu anúncio, você paga por aquele clique independentemente da pessoa esperar ou não a página carregar. Se o site demorar 4 segundos, mais de 40% das pessoas fecham a aba antes de ver seu produto. Com uma página ultrarrápida, quase 100% dos cliques chegam à vitrine, dobrando as chances de fechamento.</div>
           </details>
 
           <details class="faq__item">
             <summary>O que é a API de Conversões (CAPI) e por que ela é indispensável?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
             </summary>
             <div class="faq__answer">Desde as atualizações do iOS da Apple e o uso de navegadores com bloqueadores, os pixels tradicionais perdem de 20% a 40% dos dados de quem compra. A API de Conversões envia os eventos de compra diretamente do servidor para o Meta e Google, garantindo que os algoritmos saibam exatamente quem é o seu comprador ideal para otimizar os custos.</div>
           </details>
 
           <details class="faq__item">
             <summary>Como é feito o pagamento da verba dos anúncios?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
             </summary>
             <div class="faq__answer">A verba de anúncios é paga diretamente por você às plataformas (Meta Ads, Google Ads ou TikTok Ads), utilizando o seu cartão ou boleto na sua conta própria. Dessa forma, você mantém todo o histórico, dados e controle financeiro. Meus honorários de gestão profissional são combinados à parte.</div>
           </details>
 
           <details class="faq__item">
             <summary>Em quanto tempo é possível ver os primeiros resultados?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
             </summary>
             <div class="faq__answer">Normalmente, as primeiras mensagens no WhatsApp e orçamentos começam a cair já nas primeiras 48 a 72 horas após a aprovação dos anúncios. A estabilização de ROAS e a redução consistente do custo por aquisição amadurecem ao longo das primeiras 2 a 4 semanas de aprendizado do algoritmo.</div>
           </details>
@@ -2664,7 +2765,9 @@
           <p>Sem compromisso: eu avalio a estrutura das suas campanhas e a velocidade da sua página, identificando exatamente onde você está perdendo vendas.</p>
           <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener noreferrer" onclick="return gtag_report_conversion(this.href);">
             Agendar Diagnóstico Gratuito
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
         </div>
       </div>
