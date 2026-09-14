@@ -2,15 +2,8 @@
 <html lang="pt-BR">
 
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-W2NKZJBX');</script>
+  <!-- Google Tag Manager (carregamento adiado — ver explicação no final do <body>) -->
+  <script>window.dataLayer = window.dataLayer || [];</script>
   <!-- End Google Tag Manager -->
 
   <meta charset="UTF-8">
@@ -25,7 +18,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
   <style>
     /* ============ TOKENS DE DESIGN ============ */
@@ -38,7 +33,7 @@
       --border-strong: rgba(148, 163, 184, .28);
       --text: #eef2f8;
       --text-soft: #97a3b8;
-      --text-mute: #6a7690;
+      --text-mute: #76829c;
       --cyan: #29d3ee;
       --indigo: #6f7bf7;
       --green: #3ddc97;
@@ -264,6 +259,8 @@
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       gap: .6rem;
       padding: .95rem 1.65rem;
       border-radius: 999px;
@@ -271,7 +268,7 @@
       font-weight: 600;
       font-size: .98rem;
       transition: transform .22s cubic-bezier(.22, 1, .36, 1), box-shadow .22s ease, background .22s ease, border-color .22s ease, color .22s ease;
-      white-space: nowrap;
+      white-space: normal;
       position: relative;
       overflow: hidden;
     }
@@ -1322,7 +1319,7 @@
       background: var(--border);
     }
 
-    .method__step h4 {
+    .method__step h3 {
       font-size: 1.05rem;
       margin-bottom: .4rem;
     }
@@ -1475,6 +1472,15 @@
       gap: 1.5rem;
       margin-top: 2rem;
     }
+
+    .plan-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+    .plan-card .btn {
+    margin-top: auto;
+  }
 
     .plan-card {
       background: var(--surface);
@@ -1831,6 +1837,8 @@
         grid-template-columns: repeat(3, 1fr);
       }
     }
+
+    
   </style>
 
 </head>
@@ -1873,7 +1881,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="#topo" class="logo">
-        <span class="logo__mark"><img src="imgs/logo.jpg" alt="Iago Carvalho" loading="eager"></span>
+        <span class="logo__mark"><img src="imgs/logo.jpg" alt="Iago Carvalho" width="38" height="38" fetchpriority="high" loading="eager" decoding="sync"></span>
         <span>
           Iago Carvalho
           <span class="logo__sub">Tráfego & Engenharia Web</span>
@@ -1932,7 +1940,7 @@
       <div class="container hero__grid">
         <div>
           <span class="eyebrow reveal" style="animation-delay:.05s">Tráfego Pago de Precisão & Otimização de Código</span>
-          <h1 class="reveal" style="animation-delay:.12s">Tráfego pago que vira faturamento real, não apenas clique</h1>
+          <h1 class="reveal" style="animation-delay:.12s">Pare de pagar por clique sem venda: Em 48h te mostro exatamente onde seu dinheiro está vazando</h1>
           <p class="hero__sub reveal" style="animation-delay:.19s">
             Duas competências raras no mercado digital: estratégia avançada de Meta Ads, Google Ads e TikTok Ads com a capacidade de um desenvolvedor web para eliminar a lentidão do seu site e garantir rastreamento 100% à prova de falhas.
           </p>
@@ -2443,19 +2451,19 @@
 
         <div class="method__steps reveal-on-scroll">
           <div class="method__step">
-            <h4>01. Diagnóstico e Auditoria</h4>
+            <h3>01. Diagnóstico e Auditoria</h3>
             <p>Análise aprofundada da conta, produto, concorrentes e do site atual antes de gastar um único centavo em anúncios.</p>
           </div>
           <div class="method__step">
-            <h4>02. Mapeamento & Setup Técnico</h4>
+            <h3>02. Mapeamento & Setup Técnico</h3>
             <p>Configuração blindada de pixel, CAPI e GTM, além da definição das personas de compra com maior probabilidade de conversão.</p>
           </div>
           <div class="method__step">
-            <h4>03. Validação Enxuta de Criativos</h4>
+            <h3>03. Validação Enxuta de Criativos</h3>
             <p>Testes dinâmicos com orçamento controlado para validar quais mensagens e ângulos geram o menor custo por lead qualificado.</p>
           </div>
           <div class="method__step">
-            <h4>04. Escala Agressiva com Lucro</h4>
+            <h3>04. Escala Agressiva com Lucro</h3>
             <p>Aumento consistente de investimento nos conjuntos vencedores, mantendo o ROAS estável e a margem operacional segura.</p>
           </div>
         </div>
@@ -2755,7 +2763,7 @@
           <h2>Vamos analisar o potencial do seu tráfego e do seu site?</h2>
           <p>Sem compromisso: eu avalio a estrutura das suas campanhas e a velocidade da sua página, identificando exatamente onde você está perdendo vendas.</p>
           <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-            Agendar Diagnóstico Gratuito
+            Agendar Diagnóstico
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
@@ -2791,7 +2799,7 @@
           <img src="imgs/whatsappLogo.svg" alt="WhatsApp" style="width:20px; height:20px; object-fit:contain;">
         </a>
       </div>
-      <small>&copy; <span id="anoAtual"></span> Iago Carvalho. Tráfego Pago & Engenharia de Conversão Web/Mobile em Campinas, SP.</small>
+      <small>&copy; <span id="anoAtual"></span> Iago Carvalho. Tráfego Pago & Engenharia de Conversão Web/Mobile.</small>
     </div>
   </footer>
 
@@ -2821,46 +2829,44 @@
         });
       });
 
-      // 3. Nav Scrollspy Ativo
+      // 3. Nav Scrollspy Ativo — via IntersectionObserver (evita reflow forçado
+      // de ler getBoundingClientRect em todo scroll, que o PageSpeed acusa)
       var links = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
       var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); }).filter(Boolean);
       var pendingHref = null;
-      var setActive = function () {
-        var current = sections[0];
-        sections.forEach(function (section) {
-          if (section.getBoundingClientRect().top <= 140) current = section;
-        });
-        if (pendingHref) {
-          var pendingSection = document.querySelector(pendingHref);
-          if (pendingSection && pendingSection.getBoundingClientRect().top <= 140) {
-            pendingHref = null;
-          } else if (pendingSection) {
-            current = pendingSection;
-          }
-        }
+      var setActiveByHref = function (href) {
         links.forEach(function (l) {
-          l.classList.toggle('is-active', current && l.getAttribute('href') === '#' + current.id);
+          l.classList.toggle('is-active', l.getAttribute('href') === href);
         });
       };
-      var activeFrame = 0;
-      var requestActiveUpdate = function () {
-        if (activeFrame) return;
-        activeFrame = requestAnimationFrame(function () {
-          activeFrame = 0;
-          setActive();
-        });
-      };
-      setActive();
+      if (sections.length) {
+        var visibleSections = new Set();
+        var spyObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) visibleSections.add(entry.target.id);
+            else visibleSections.delete(entry.target.id);
+          });
+          if (pendingHref) {
+            var pendingId = pendingHref.slice(1);
+            if (visibleSections.has(pendingId)) pendingHref = null;
+            else return;
+          }
+          // Escolhe a seção visível que aparece primeiro no documento
+          for (var i = 0; i < sections.length; i++) {
+            if (visibleSections.has(sections[i].id)) {
+              setActiveByHref('#' + sections[i].id);
+              break;
+            }
+          }
+        }, { rootMargin: '-140px 0px -60% 0px', threshold: 0 });
+        sections.forEach(function (section) { spyObserver.observe(section); });
+      }
       links.forEach(function (link) {
         link.addEventListener('click', function () {
           pendingHref = link.getAttribute('href');
-          links.forEach(function (item) {
-            item.classList.toggle('is-active', item === link);
-          });
+          setActiveByHref(pendingHref);
         });
       });
-      window.addEventListener('resize', requestActiveUpdate, { passive: true });
-      window.addEventListener('scroll', requestActiveUpdate, { passive: true });
 
       // 4. Scroll Reveal via IntersectionObserver com fallback automático
       var revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -2951,6 +2957,33 @@
 
       // 7. Atualização dinâmica do ano no rodapé
       document.getElementById('anoAtual').textContent = new Date().getFullYear();
+
+      // 8. Carregamento adiado do Google Tag Manager
+      // O GTM injeta GA4, Meta Pixel/CAPI e outros scripts pesados (~700 KiB somados).
+      // Adiar o carregamento até a primeira interação (ou um timeout de segurança)
+      // tira esse JavaScript do caminho crítico de renderização e reduz LCP/TBT,
+      // sem perder nenhum evento — os cliques que importam (WhatsApp) só acontecem
+      // depois que a pessoa já interagiu com a página de qualquer forma.
+      var gtmLoaded = false;
+      var loadGTM = function () {
+        if (gtmLoaded) return;
+        gtmLoaded = true;
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || []; w[l].push({
+            'gtm.start': new Date().getTime(), event: 'gtm.js'
+          }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W2NKZJBX');
+        ['scroll', 'mousemove', 'keydown', 'touchstart', 'click'].forEach(function (evt) {
+          window.removeEventListener(evt, loadGTM, { passive: true });
+        });
+        clearTimeout(gtmFallback);
+      };
+      var gtmFallback = setTimeout(loadGTM, 3500);
+      ['scroll', 'mousemove', 'keydown', 'touchstart', 'click'].forEach(function (evt) {
+        window.addEventListener(evt, loadGTM, { passive: true, once: true });
+      });
     })();
   </script>
 </body>
