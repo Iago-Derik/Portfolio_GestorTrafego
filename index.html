@@ -1,2996 +1,1056 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <!-- Google Tag Manager (carregamento adiado — ver explicação no final do <body>) -->
-  <script>window.dataLayer = window.dataLayer || [];</script>
-  <!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iago Carvalho | Tráfego Pago Estratégico &amp; Engenharia de Conversão</title>
+  <meta name="description" content="Gestão de tráfego pago (Meta Ads, Google Ads e TikTok Ads) por quem também é desenvolvedor web: rastreamento correto, site rápido e diagnóstico em 48h.">
+  <meta name="theme-color" content="#f3f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Iago Carvalho | Gestor de tráfego pago e desenvolvedor web">
+  <meta property="og:description" content="Em 48h eu mostro onde sua verba está vazando: nos anúncios, no rastreamento ou na página lenta.">
+  <!-- TODO: quando o domínio final estiver definido, adicionar og:image (URL absoluta, 1200x630) para a prévia de link no WhatsApp e no Instagram. -->
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iago Carvalho — Tráfego Pago Estratégico & Engenharia de Conversão</title>
-  <meta name="description" content="Gestão estratégica de tráfego pago (Meta Ads, Google Ads e TikTok Ads) com um diferencial raro: quem cuida da sua campanha também é desenvolvedor web. Rastreamento correto, site rápido, vendas de verdade.">
+  <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32.png">
+  <link rel="apple-touch-icon" href="imgs/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Favicon Oficial -->
-  <link rel="icon" type="image/jpeg" href="imgs/logo.jpg">
-  <link rel="shortcut icon" href="imgs/logo.jpg" type="image/jpeg">
-  <link rel="apple-touch-icon" href="imgs/logo.jpg">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <script>
+    /* dataLayer precisa existir antes de qualquer evento; o GTM é carregado depois (ver fim do body). */
+    window.dataLayer = window.dataLayer || [];
+    /* Tema: respeita a escolha salva, senão o sistema. Roda antes do CSS pintar para evitar flash. */
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+      } catch (e) { /* storage bloqueado: segue o tema do sistema */ }
+    })();
+  </script>
 
   <style>
-    /* ============ TOKENS DE DESIGN ============ */
+    /* ============================================================
+       FONTES (auto-hospedadas: sem requisição a terceiros)
+       ============================================================ */
+    @font-face {
+      font-family: "Geist";
+      src: url("assets/fonts/geist-latin-wght-normal.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Geist Mono";
+      src: url("assets/fonts/geist-mono-latin-wght-normal.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ============================================================
+       TOKENS
+       Um único destaque (verde do logo, o mesmo do WhatsApp).
+       Forma: botões e tags em pílula, contêineres e imagens 20px, tiles pequenos 12px.
+       ============================================================ */
     :root {
-      --bg: #090d14;
-      --bg-alt: #0c121c;
-      --surface: #111926;
-      --surface-2: #0e1520;
-      --border: rgba(148, 163, 184, .14);
-      --border-strong: rgba(148, 163, 184, .28);
-      --text: #eef2f8;
-      --text-soft: #97a3b8;
-      --text-mute: #76829c;
-      --cyan: #29d3ee;
-      --indigo: #6f7bf7;
-      --green: #3ddc97;
-      --amber: #f2b155;
+      color-scheme: light dark;
 
-      --font-display: 'Sora', sans-serif;
-      --font-body: 'Inter', sans-serif;
+      --font: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-      --container: 1160px;
-      --radius-sm: 10px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
+      --wrap: 1200px;
+      --gutter: clamp(20px, 5vw, 40px);
+      --header-h: 68px;
+      --r-pill: 999px;
+      --r-lg: 20px;
+      --r-sm: 12px;
+      --ease: cubic-bezier(.16, 1, .3, 1);
 
-      --header-h: 76px;
+      /* Escala de camadas */
+      --z-cta: 30;
+      --z-header: 40;
+      --z-menu: 35;
+
+      /* Tema claro */
+      --bg: #f3f5f7;
+      --bg-2: #e8ecef;
+      --surface: #fafbfc;
+      --line: rgba(13, 20, 27, .10);
+      --line-strong: rgba(13, 20, 27, .20);
+      --text: #0d141b;
+      --text-2: #434f5c;
+      --text-3: #586572;
+      --accent: #167a5e;
+      --accent-text: #0f6a51;
+      --on-accent: #f3faf7;
+      --accent-tint: rgba(22, 122, 94, .09);
+      --accent-line: rgba(22, 122, 94, .30);
+      --deep: #0e5a45;
+      --on-deep: #eafaf3;
+      --on-deep-2: #b8e6d4;
+      --shadow: 0 18px 40px -24px rgba(16, 70, 56, .35);
     }
-
-    /* ============ RESET ============ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0b0f14;
+        --bg-2: #10161d;
+        --surface: #141c25;
+        --line: rgba(232, 237, 242, .10);
+        --line-strong: rgba(232, 237, 242, .20);
+        --text: #e8edf2;
+        --text-2: #a7b2bd;
+        --text-3: #8896a4;
+        --accent: #43d1a0;
+        --accent-text: #43d1a0;
+        --on-accent: #05130d;
+        --accent-tint: rgba(67, 209, 160, .10);
+        --accent-line: rgba(67, 209, 160, .30);
+        --deep: #0f4a37;
+        --shadow: 0 18px 40px -24px rgba(0, 0, 0, .7);
+      }
     }
+    :root[data-theme="dark"] {
+      --bg: #0b0f14;
+      --bg-2: #10161d;
+      --surface: #141c25;
+      --line: rgba(232, 237, 242, .10);
+      --line-strong: rgba(232, 237, 242, .20);
+      --text: #e8edf2;
+      --text-2: #a7b2bd;
+      --text-3: #8896a4;
+      --accent: #43d1a0;
+      --accent-text: #43d1a0;
+      --on-accent: #05130d;
+      --accent-tint: rgba(67, 209, 160, .10);
+      --accent-line: rgba(67, 209, 160, .30);
+      --deep: #0f4a37;
+      --shadow: 0 18px 40px -24px rgba(0, 0, 0, .7);
+    }
+    :root[data-theme="light"] { color-scheme: light; }
+    :root[data-theme="dark"] { color-scheme: dark; }
 
+    /* ============================================================
+       BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
     html {
+      -webkit-text-size-adjust: 100%;
       scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 16px);
     }
-
     body {
-      background:
-        radial-gradient(1200px 600px at 85% -5%, rgba(41, 211, 238, .13), transparent 60%),
-        radial-gradient(1000px 520px at 8% 12%, rgba(111, 123, 247, .11), transparent 55%),
-        var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-      background: none;
-      color: inherit;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -.01em;
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--cyan);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    /* ============ ÍCONES FLUTUANTES NO FUNDO (AMBIENT DRIFT) ============ */
-    .bg-floating-icons {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .bg-icon {
-      position: absolute;
-      opacity: 0.14;
-      filter: drop-shadow(0 0 16px rgba(41, 211, 238, .25));
-      will-change: transform;
-      pointer-events: none;
-    }
-
-    .bg-icon img,
-    .bg-icon svg {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .bg-icon--1 {
-      top: 10%;
-      left: 5%;
-      width: 48px;
-      height: 48px;
-      animation: floatDrift1 14s ease-in-out infinite;
-    }
-
-    .bg-icon--2 {
-      top: 22%;
-      right: 7%;
-      width: 52px;
-      height: 52px;
-      animation: floatDrift2 18s ease-in-out infinite;
-    }
-
-    .bg-icon--3 {
-      top: 42%;
-      left: 3%;
-      width: 46px;
-      height: 46px;
-      animation: floatDrift3 15s ease-in-out infinite;
-    }
-
-    .bg-icon--4 {
-      top: 58%;
-      right: 4%;
-      width: 50px;
-      height: 50px;
-      animation: floatDrift1 17s ease-in-out infinite 2s;
-    }
-
-    .bg-icon--5 {
-      top: 76%;
-      left: 6%;
-      width: 48px;
-      height: 48px;
-      animation: floatDrift2 20s ease-in-out infinite 1s;
-    }
-
-    .bg-icon--6 {
-      top: 90%;
-      right: 8%;
-      width: 44px;
-      height: 44px;
-      animation: floatDrift3 16s ease-in-out infinite 3s;
-    }
-
-    @keyframes floatDrift1 {
-
-      0%,
-      100% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-      }
-
-      50% {
-        transform: translate3d(14px, -30px, 0) rotate(8deg);
-      }
-    }
-
-    @keyframes floatDrift2 {
-
-      0%,
-      100% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-      }
-
-      50% {
-        transform: translate3d(-16px, 26px, 0) rotate(-10deg);
-      }
-    }
-
-    @keyframes floatDrift3 {
-
-      0%,
-      100% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-
-      50% {
-        transform: translate3d(-12px, -22px, 0) scale(1.08);
-      }
-    }
-
-    /* ============ CONTAINERS E ESTRUTURA ============ */
-    .container {
-      width: 100%;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section {
-      padding: 6.5rem 0;
-      scroll-margin-top: calc(var(--header-h) + 1rem);
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-head {
-      max-width: 680px;
-      margin-bottom: 3.2rem;
-    }
-
-    .section-head p {
-      color: var(--text-soft);
-      font-size: 1.05rem;
-      margin-top: .9rem;
-    }
-
-    .section-alt {
-      background: linear-gradient(180deg, transparent, var(--bg-alt) 8%, var(--bg-alt) 92%, transparent);
-    }
-
-    /* ============ BOTÕES ============ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: .6rem;
-      padding: .95rem 1.65rem;
-      border-radius: 999px;
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: .98rem;
-      transition: transform .22s cubic-bezier(.22, 1, .36, 1), box-shadow .22s ease, background .22s ease, border-color .22s ease, color .22s ease;
-      white-space: normal;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .25), transparent);
-      transform: skewX(-20deg);
-      transition: left .6s ease;
-      pointer-events: none;
-    }
-
-    .btn:hover::before {
-      left: 140%;
-    }
-
-    .btn--primary {
-      background: linear-gradient(135deg, var(--cyan), var(--indigo));
-      color: #04101a;
-      box-shadow: 0 8px 24px -8px rgba(41, 211, 238, .45);
-    }
-
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 34px -6px rgba(41, 211, 238, .65);
-    }
-
-    .btn--ghost {
-      background: rgba(17, 25, 38, .55);
-      color: var(--text);
-      border: 1px solid var(--border-strong);
-      backdrop-filter: blur(8px);
-    }
-
-    .btn--ghost:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px -8px rgba(41, 211, 238, .3);
-    }
-
-    .btn--sm {
-      padding: .7rem 1.25rem;
-      font-size: .88rem;
-    }
-
-    .btn svg {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      transition: transform .2s ease;
-    }
-
-    .btn:hover svg {
-      transform: translateX(3px);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      color: var(--cyan);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: .82rem;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 0 4px rgba(41, 211, 238, .2);
-      animation: pulseDot 2.2s infinite;
-    }
-
-    @keyframes pulseDot {
-
-      0%,
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 4px rgba(41, 211, 238, .2);
-      }
-
-      50% {
-        transform: scale(1.15);
-        box-shadow: 0 0 0 8px rgba(41, 211, 238, .05);
-      }
-    }
-
-    /* ============ HEADER ============ */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 90;
-      height: var(--header-h);
-      display: flex;
-      align-items: center;
-      background: rgba(9, 13, 20, .78);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-      transition: border-color .28s ease, background .28s ease, box-shadow .28s ease;
-    }
-
-    .header.is-scrolled {
-      border-bottom-color: var(--border);
-      background: rgba(9, 13, 20, .94);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .6);
-    }
-
-    .header__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      width: 100%;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.05rem;
-      transition: transform .2s ease;
-    }
-
-    .logo:hover {
-      transform: translateY(-1px);
-    }
-
-    .logo__mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      background: linear-gradient(135deg, var(--cyan), var(--indigo));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #04101a;
-      font-weight: 800;
-      font-size: .95rem;
-      overflow: hidden;
-      flex-shrink: 0;
-      border: 1px solid rgba(41, 211, 238, .3);
-      box-shadow: 0 4px 14px -4px rgba(41, 211, 238, .4);
-    }
-
-    .logo__mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .logo__sub {
-      display: block;
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: .72rem;
-      color: var(--text-soft);
-      margin-top: 1px;
-    }
-
-    .nav {
-      display: none;
-    }
-
-    .nav__list {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav__link {
-      font-size: .94rem;
-      color: var(--text-soft);
-      position: relative;
-      padding: 8px 0;
-      transition: color .22s ease;
-    }
-
-    .nav__link:hover,
-    .nav__link.is-active {
-      color: var(--text);
-    }
-
-    .nav__link::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--indigo));
-      border-radius: 2px;
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform .25s cubic-bezier(.22, 1, .36, 1);
-    }
-
-    .nav__link:hover::after,
-    .nav__link.is-active::after {
-      transform: scaleX(1);
-    }
-
-    .header__actions {
-      display: flex;
-      align-items: center;
-      gap: .9rem;
-    }
-
-    .header__cta {
-      display: none;
-    }
-
-    .hamburger {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      border-radius: 8px;
-      transition: background .2s ease;
-    }
-
-    .hamburger:hover {
-      background: rgba(148, 163, 184, .1);
-    }
-
-    .hamburger__bar {
-      width: 20px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: transform .25s ease, opacity .25s ease;
-    }
-
-    .hamburger[aria-expanded="true"] .hamburger__bar:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .hamburger[aria-expanded="true"] .hamburger__bar:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger[aria-expanded="true"] .hamburger__bar:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    .mobile-nav {
-      position: fixed;
-      top: var(--header-h);
-      left: 0;
-      right: 0;
-      z-index: 85;
-      background: rgba(9, 13, 20, .98);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      padding: 1.4rem 1.5rem 2rem;
-      transform: translateY(-12px);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform .25s ease, opacity .25s ease;
-    }
-
-    .mobile-nav.is-open {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .mobile-nav__list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .mobile-nav__list a {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.05rem;
-      padding: 6px 0;
-      transition: color .2s ease;
-    }
-
-    .mobile-nav__list a:hover {
-      color: var(--cyan);
-    }
-
-    /* ============ HERO ============ */
-    .hero {
-      padding: calc(var(--header-h) + 3.8rem) 0 4.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero__grid {
-      display: grid;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .hero__grid>* {
-      min-width: 0;
-    }
-
-    .hero__badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .7rem;
-      margin-top: 2.2rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .6rem;
-      padding: .55rem .95rem;
-      border-radius: 999px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      font-size: .84rem;
-      color: var(--text-soft);
-      transition: transform .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
-    }
-
-    .badge:hover {
-      transform: translateY(-2px);
-      border-color: rgba(41, 211, 238, .4);
-      color: var(--text);
-      box-shadow: 0 4px 14px -4px rgba(41, 211, 238, .3);
-    }
-
-    .badge-icon-img {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .badge svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.2rem, 5.4vw, 3.4rem);
-      margin-top: 1.1rem;
-      max-width: 16ch;
-    }
-
-    .hero__sub {
-      margin-top: 1.3rem;
-      color: var(--text-soft);
-      font-size: 1.1rem;
-      max-width: 48ch;
-    }
-
-    .hero__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .9rem;
-      margin-top: 2.1rem;
-    }
-
-    .hero__visual {
-      position: relative;
-    }
-
-    .panel {
-      background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.8rem;
-      box-shadow: 0 30px 60px -25px rgba(0, 0, 0, .65), 0 0 35px -10px rgba(41, 211, 238, .12);
-      position: relative;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    }
-
-    .panel:hover {
-      border-color: var(--border-strong);
-      box-shadow: 0 32px 64px -20px rgba(0, 0, 0, .75), 0 0 40px -8px rgba(41, 211, 238, .2);
-    }
-
-    .panel__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.4rem;
-    }
-
-    .panel__dot-row {
-      display: flex;
-      gap: 6px;
-    }
-
-    .panel__dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--border-strong);
-      transition: background .2s ease;
-    }
-
-    .panel:hover .panel__dot:nth-child(1) {
-      background: #ff5f56;
-    }
-
-    .panel:hover .panel__dot:nth-child(2) {
-      background: #ffbd2e;
-    }
-
-    .panel:hover .panel__dot:nth-child(3) {
-      background: #27c93f;
-    }
-
-    .panel__label {
-      font-size: .78rem;
-      color: var(--text-mute);
-      font-family: var(--font-display);
-      display: flex;
-      align-items: center;
-      gap: .45rem;
-    }
-
-    .panel__label::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      display: inline-block;
-      animation: pulseGreen 2s infinite;
-    }
-
-    @keyframes pulseGreen {
-
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: .4;
-        transform: scale(1.35);
-      }
-    }
-
-    .panel__metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .85rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .metric {
-      background: rgba(255, 255, 255, .025);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: .9rem .75rem;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
-    }
-
-    .metric:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-strong);
-      background: rgba(255, 255, 255, .045);
-    }
-
-    .metric__value {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.32rem;
-    }
-
-    .metric__value.up {
-      color: var(--green);
-    }
-
-    .metric__label {
-      font-size: .74rem;
-      color: var(--text-mute);
-      margin-top: .2rem;
-    }
-
-    .panel__chart {
-      display: flex;
-      align-items: flex-end;
-      gap: .55rem;
-      height: 96px;
-      padding: 0 .2rem;
-      position: relative;
-    }
-
-    .panel__bar {
-      flex: 1;
-      border-radius: 6px 6px 0 0;
-      background: linear-gradient(180deg, var(--cyan), rgba(111, 123, 247, .35));
-      transition: transform .2s ease, filter .2s ease;
-      cursor: pointer;
-    }
-
-    .panel__bar:hover {
-      transform: scaleY(1.06);
-      filter: brightness(1.25);
-    }
-
-    .panel__bubble {
-      margin-top: 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      background: rgba(61, 220, 151, .09);
-      border: 1px solid rgba(61, 220, 151, .28);
-      border-radius: var(--radius-sm);
-      padding: .85rem 1rem;
-      font-size: .84rem;
-      color: #c6f2df;
-      animation: floatNotice 4s ease-in-out infinite;
-    }
-
-    @keyframes floatNotice {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-3px);
-      }
-    }
-
-    .panel__bubble svg {
-      width: 20px;
-      height: 20px;
-      color: var(--green);
-      flex-shrink: 0;
-    }
-
-    .hero__glow {
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(41, 211, 238, .22), transparent 70%);
-      filter: blur(24px);
-      top: -60px;
-      right: -60px;
-      z-index: -1;
-      pointer-events: none;
-      animation: pulseGlow 8s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: .8;
-      }
-
-      50% {
-        transform: scale(1.15);
-        opacity: 1;
-      }
-    }
-
-    /* ============ LINHA HORIZONTAL DINÂMICA (MARQUEE AJUSTADO SEM CORTE) ============ */
-    .ticker-section {
-      padding: 1.8rem 0 2.2rem;
-      position: relative;
-      z-index: 2;
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(12, 18, 28, .85), rgba(9, 13, 20, .95));
-    }
-
-    .ticker-header {
-      text-align: center;
-      margin-bottom: 1.1rem;
-    }
-
-    .ticker-header span {
-      font-family: var(--font-display);
-      font-size: .78rem;
-      font-weight: 700;
-      color: var(--cyan);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-    }
-
-    .ticker-header span::before,
-    .ticker-header span::after {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cyan));
-    }
-
-    .ticker-header span::after {
-      background: linear-gradient(90deg, var(--cyan), transparent);
-    }
-
-    /* O wrapper recebe padding vertical amplo (18px em cima e 22px embaixo) para que o hover nunca seja cortado */
-    .ticker-wrapper {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      user-select: none;
-      padding: 18px 0 22px;
-      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-    }
-
-    .ticker-content {
-      display: flex;
-      width: max-content;
-      animation: scrollTicker 32s linear infinite;
-      will-change: transform;
-      padding: 6px 0;
-    }
-
-    .ticker-wrapper:hover .ticker-content {
-      animation-play-state: paused;
-    }
-
-    @keyframes scrollTicker {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-
-      100% {
-        transform: translate3d(-50%, 0, 0);
-      }
-    }
-
-    .ticker-items {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      padding-right: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    .ticker-item {
-      display: inline-flex;
-      align-items: center;
-      gap: .75rem;
-      padding: .65rem 1.3rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--text);
-      font-size: .9rem;
-      font-weight: 600;
-      white-space: nowrap;
-      transition: transform .22s cubic-bezier(.22, 1, .36, 1), border-color .22s ease, box-shadow .22s ease;
-      position: relative;
-      margin: 4px 0;
-    }
-
-    .ticker-item:hover {
-      transform: translateY(-4px);
-      border-color: rgba(41, 211, 238, .5);
-      box-shadow: 0 8px 20px -4px rgba(41, 211, 238, .4);
-    }
-
-    .ticker-img {
-      width: 26px;
-      height: 26px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .ticker-item svg {
-      width: 26px;
-      height: 26px;
-      flex-shrink: 0;
-    }
-
-    /* Animação de entrada dos blocos */
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      animation: revealAnim .7s cubic-bezier(.22, .9, .32, 1) forwards;
-    }
-
-    @keyframes revealAnim {
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .65s cubic-bezier(.22, .9, .32, 1), transform .65s cubic-bezier(.22, .9, .32, 1);
-      will-change: opacity, transform;
-    }
-
-    .reveal-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ============ DIFERENCIAL ============ */
-    .compare {
-      display: grid;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .5);
-    }
-
-    .compare__col {
-      background: var(--bg-alt);
-      padding: 2.2rem 1.9rem;
-      min-width: 0;
-      transition: background .25s ease;
-    }
-
-    .compare__col--you {
-      background: linear-gradient(180deg, rgba(41, 211, 238, .07), rgba(111, 123, 247, .04));
-      position: relative;
-    }
-
-    .compare__col--you::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--indigo));
-    }
-
-    .compare__head {
-      display: flex;
-      align-items: center;
-      gap: .85rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .compare__avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 13px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      transition: transform .25s ease;
-    }
-
-    .compare__col--common .compare__avatar {
-      background: rgba(148, 163, 184, .12);
-    }
-
-    .compare__col--you .compare__avatar {
-      background: linear-gradient(135deg, var(--cyan), var(--indigo));
-      overflow: hidden;
-      border: 2px solid rgba(41, 211, 238, .4);
-      box-shadow: 0 6px 18px -6px rgba(41, 211, 238, .45);
-    }
-
-    .compare__col--you:hover .compare__avatar {
-      transform: scale(1.05);
-    }
-
-    .compare__avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .compare__title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    .compare__title span {
-      display: block;
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: .8rem;
-      color: var(--text-mute);
-      margin-top: 2px;
-    }
-
-    .compare__list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.15rem;
-    }
-
-    .compare__item {
-      display: flex;
-      gap: .8rem;
-      align-items: flex-start;
-      font-size: .95rem;
-      line-height: 1.5;
-    }
-
-    .compare__item svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .compare__col--common .compare__item svg {
-      color: #94a3b8;
-    }
-
-    .compare__col--you .compare__item svg {
-      color: var(--green);
-    }
-
-    .compare__col--common .compare__item {
-      color: var(--text-soft);
-    }
-
-    /* ============ SEÇÃO DO STACK TÉCNICO ============ */
-    .stack-grid {
-      display: grid;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .stack-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      min-width: 0;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-      position: relative;
-    }
-
-    .stack-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-strong);
-      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, .5);
-    }
-
-    .stack-card__header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .stack-card__icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, .03);
-      border: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-
-    .stack-card__icon img,
-    .stack-card__icon svg {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-    }
-
-    .stack-card h3 {
-      font-size: 1.18rem;
-      margin-bottom: .25rem;
-    }
-
-    .stack-card__badge {
-      font-size: .74rem;
-      color: var(--cyan);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-    }
-
-    .stack-card p {
-      color: var(--text-soft);
-      font-size: .95rem;
-      line-height: 1.6;
-    }
-
-    .stack-card__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-top: 1.2rem;
-    }
-
-    .stack-card__tag {
-      font-size: .78rem;
-      padding: .35rem .75rem;
-      background: rgba(255, 255, 255, .03);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--text-soft);
-    }
-
-    /* ============ SERVIÇOS ============ */
-    .services {
-      display: grid;
-      gap: 1.4rem;
-    }
-
-    .service {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      min-width: 0;
-      transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, box-shadow .25s ease;
-      position: relative;
-    }
-
-    .service:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-strong);
-      box-shadow: 0 18px 36px -10px rgba(0, 0, 0, .55);
-    }
-
-    .service__icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.4rem;
-      transition: transform .25s ease, border-color .25s ease;
-      background: rgba(255, 255, 255, .03);
-      border: 1px solid var(--border);
-    }
-
-    .service:hover .service__icon {
-      transform: scale(1.08);
-      border-color: rgba(41, 211, 238, .4);
-    }
-
-    .service__icon img,
-    .service__icon svg {
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
-    }
-
-    .service h3 {
-      font-size: 1.18rem;
-      margin-bottom: .6rem;
-    }
-
-    .service p {
-      color: var(--text-soft);
-      font-size: .95rem;
-      line-height: 1.6;
-    }
-
-    /* ============ METODOLOGIA ============ */
-    .method {
-      position: relative;
-    }
-
-    .method__steps {
-      display: grid;
-      gap: 1.6rem;
-      counter-reset: step;
-    }
-
-    .method__step {
-      position: relative;
-      padding-left: 3.4rem;
-      transition: transform .2s ease;
-    }
-
-    .method__step:hover {
-      transform: translateY(-2px);
-    }
-
-    .method__step::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 2.3rem;
-      height: 2.3rem;
-      border-radius: 50%;
-      border: 1px solid var(--border-strong);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: .95rem;
-      color: var(--cyan);
-      background: var(--bg-alt);
-      box-shadow: 0 0 14px -3px rgba(41, 211, 238, .3);
-      transition: border-color .2s ease, transform .2s ease;
-    }
-
-    .method__step:hover::before {
-      border-color: var(--cyan);
-      transform: scale(1.08);
-    }
-
-    .method__step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 1.15rem;
-      top: 2.5rem;
-      bottom: -1.6rem;
-      width: 1px;
-      background: var(--border);
-    }
-
-    .method__step h3 {
-      font-size: 1.05rem;
-      margin-bottom: .4rem;
-    }
-
-    .method__step p {
-      color: var(--text-soft);
-      font-size: .95rem;
-      max-width: 52ch;
-    }
-
-    /* ============ CASE VELHA MANNA (DUPLO SHOWCASE COM AS DUAS IMAGENS DO SITE) ============ */
-    .case {
-      margin-top: 2.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 2.2rem;
-      min-width: 0;
-      overflow: hidden;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    }
-
-    .case:hover {
-      transform: translateY(-3px);
-      border-color: var(--border-strong);
-      box-shadow: 0 22px 45px -15px rgba(0, 0, 0, .55);
-    }
-
-    .case__showcase {
-      display: grid;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .case__mockup-card {
+      margin: 0;
       background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
-    }
-
-    .case__mockup-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(41, 211, 238, .35);
-      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, .6);
-    }
-
-    .case__mockup-header {
-      padding: .6rem 1rem;
-      background: rgba(255, 255, 255, .025);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: .76rem;
-      color: var(--text-mute);
-    }
-
-    .case__mockup-dots {
-      display: flex;
-      gap: 5px;
-    }
-
-    .case__mockup-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--border-strong);
-    }
-
-    .case__mockup-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      object-position: top center;
-      transition: transform .35s ease;
-    }
-
-    .case__mockup-card:hover img {
-      transform: scale(1.02);
-    }
-
-    .case__tag {
-      color: var(--cyan);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: .84rem;
-    }
-
-    .case__body h3 {
-      font-size: 1.35rem;
-      margin-top: .5rem;
-      margin-bottom: .8rem;
-    }
-
-    .case__body p {
-      color: var(--text-soft);
-      font-size: .96rem;
-      margin-bottom: .6rem;
-      line-height: 1.6;
-    }
-
-    .case__personas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .55rem;
-      margin: 1.1rem 0 1.4rem;
-    }
-
-    .chip {
-      font-size: .8rem;
-      padding: .45rem .85rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--text-soft);
-      background: rgba(255, 255, 255, .025);
-      transition: border-color .2s ease, color .2s ease;
-    }
-
-    .chip:hover {
-      border-color: rgba(41, 211, 238, .35);
       color: var(--text);
+      font: 400 1rem/1.6 var(--font);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
+    h1, h2, h3 { margin: 0; font-weight: 650; letter-spacing: -.03em; line-height: 1.08; text-wrap: balance; }
+    p { margin: 0; text-wrap: pretty; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    ul, ol { margin: 0; padding: 0; list-style: none; }
+    button { font: inherit; color: inherit; }
+    svg.ico { width: 1.25em; height: 1.25em; flex: none; fill: currentColor; }
+    :focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; border-radius: 6px; }
 
-    .case__link {
-      display: inline-flex;
-      align-items: center;
-      gap: .45rem;
-      color: var(--cyan);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: .94rem;
-      transition: transform .2s ease, gap .2s ease;
+    .wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+    .skip {
+      position: absolute; left: var(--gutter); top: -60px; z-index: 60;
+      padding: 10px 16px; border-radius: var(--r-pill);
+      background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none;
     }
+    .skip:focus { top: 12px; }
 
-    .case__link:hover {
-      gap: .65rem;
-      transform: translateX(2px);
+    /* ============================================================
+       BOTÕES (um rótulo por intenção: "Pedir diagnóstico")
+       ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+      min-height: 50px; padding: 0 1.4rem; border-radius: var(--r-pill);
+      border: 1px solid transparent; background: none;
+      font-weight: 600; font-size: .975rem; line-height: 1; white-space: nowrap;
+      text-decoration: none; cursor: pointer;
+      transition: transform .3s var(--ease), background-color .2s, border-color .2s;
     }
+    .btn .ico { width: 1.3em; height: 1.3em; }
+    .btn--primary { background: var(--accent); color: var(--on-accent); }
+    .btn--primary:hover { background: color-mix(in srgb, var(--accent) 86%, var(--text)); }
+    .btn--ghost { border-color: var(--line-strong); color: var(--text); }
+    .btn--ghost:hover { background: var(--bg-2); }
+    .btn--sm { min-height: 42px; padding: 0 1.1rem; font-size: .9rem; }
+    .btn:active { transform: translateY(1px) scale(.98); }
+    .btn .arrow { transition: transform .3s var(--ease); }
+    .btn:hover .arrow { transform: translateX(3px); }
 
-    .case__link svg {
-      width: 16px;
-      height: 16px;
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .sentinel { position: absolute; top: 0; left: 0; width: 1px; height: 12px; pointer-events: none; }
+    .header {
+      position: sticky; top: 0; z-index: var(--z-header);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid transparent;
+      transition: border-color .25s;
     }
-
-    /* ============ MODELOS DE ATENDIMENTO ============ */
-    .plans {
-      display: grid;
-      gap: 1.5rem;
-      margin-top: 2rem;
+    .header.is-scrolled { border-bottom-color: var(--line); }
+    @media (prefers-reduced-transparency: reduce) {
+      .header { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
     }
+    .header__in { display: flex; align-items: center; gap: 20px; height: var(--header-h); }
 
-    .plan-card {
-    display: flex;
-    flex-direction: column;
-  }
-
-    .plan-card .btn {
-    margin-top: auto;
-  }
-
-    .plan-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 2.2rem;
-      min-width: 0;
-      position: relative;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+    .brand__tile {
+      width: 40px; height: 40px; flex: none; overflow: hidden;
+      border-radius: var(--r-sm); background: #f9fafc; border: 1px solid var(--line);
     }
+    .brand__tile img { width: 100%; height: 100%; }
+    .brand__txt { display: grid; line-height: 1.2; min-width: 0; }
+    .brand__name { font-weight: 650; letter-spacing: -.01em; }
+    .brand__sub { display: none; font-size: .78rem; color: var(--text-3); }
 
-    .plan-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-strong);
-      box-shadow: 0 18px 36px -10px rgba(0, 0, 0, .55);
+    .nav { display: none; margin-inline: auto; }
+    .nav ul { display: flex; gap: 2px; }
+    .nav a {
+      display: block; padding: 8px 12px; border-radius: var(--r-pill);
+      font-size: .93rem; font-weight: 500; color: var(--text-2); text-decoration: none;
+      transition: color .2s, background-color .2s;
     }
+    .nav a:hover { color: var(--text); background: var(--bg-2); }
+    .nav a[aria-current="true"] { color: var(--text); background: var(--bg-2); }
 
-    .plan-card--featured {
-      border-color: rgba(41, 211, 238, .4);
-      background: linear-gradient(180deg, rgba(41, 211, 238, .06), var(--surface));
+    .header__actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .header__cta { display: none; }
+    .icon-btn {
+      display: inline-grid; place-items: center; width: 42px; height: 42px;
+      border: 1px solid var(--line-strong); border-radius: var(--r-pill);
+      background: none; cursor: pointer; color: var(--text);
+      transition: background-color .2s, transform .3s var(--ease);
     }
-
-    .plan-card__badge {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      background: linear-gradient(135deg, var(--cyan), var(--indigo));
-      color: #04101a;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: .72rem;
-      padding: .3rem .75rem;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: .04em;
+    .icon-btn:hover { background: var(--bg-2); }
+    .icon-btn:active { transform: scale(.95); }
+    .icon-btn .ico { grid-area: 1 / 1; width: 20px; height: 20px; }
+    .theme .i-sun { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .theme .i-sun { display: block; }
+      :root:not([data-theme="light"]) .theme .i-moon { display: none; }
     }
+    :root[data-theme="dark"] .theme .i-sun { display: block; }
+    :root[data-theme="dark"] .theme .i-moon { display: none; }
+    .burger .i-x { display: none; }
+    .burger[aria-expanded="true"] .i-x { display: block; }
+    .burger[aria-expanded="true"] .i-list { display: none; }
 
-    .plan-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: .6rem;
+    .menu {
+      position: fixed; inset: var(--header-h) 0 auto 0; z-index: var(--z-menu);
+      padding: 12px var(--gutter) 24px;
+      background: var(--bg); border-bottom: 1px solid var(--line);
+      visibility: hidden; opacity: 0; transform: translateY(-8px);
+      transition: opacity .25s, transform .3s var(--ease), visibility 0s .3s;
     }
-
-    .plan-card p {
-      color: var(--text-soft);
-      font-size: .95rem;
-      margin-bottom: 1.4rem;
+    .menu.is-open { visibility: visible; opacity: 1; transform: none; transition-delay: 0s; }
+    .menu a:not(.btn) {
+      display: block; padding: 14px 4px; border-bottom: 1px solid var(--line);
+      font-size: 1.1rem; font-weight: 500; text-decoration: none;
     }
+    .menu .btn { width: 100%; margin-top: 20px; }
 
-    .plan-card__features {
-      display: flex;
-      flex-direction: column;
-      gap: .75rem;
-      margin-bottom: 1.8rem;
+    @media (min-width: 1024px) {
+      .nav { display: block; }
+      .header__cta { display: inline-flex; }
+      .burger, .menu { display: none; }
     }
+    @media (min-width: 1180px) { .brand__sub { display: block; } }
 
-    .plan-card__item {
-      display: flex;
-      align-items: flex-start;
-      gap: .65rem;
-      font-size: .92rem;
-      color: var(--text);
+    /* ============================================================
+       HERO (split assimétrico, foto real)
+       ============================================================ */
+    .hero { overflow-x: clip; padding: clamp(24px, 4vw, 48px) 0 clamp(36px, 5vw, 64px); }
+    .hero__grid { display: grid; gap: clamp(32px, 5vw, 72px); align-items: start; }
+    .eyebrow { display: inline-block; margin-bottom: 20px; font-size: .95rem; font-weight: 600; color: var(--accent-text); }
+    .hero h1 { font-size: clamp(2.35rem, 1rem + 3.4vw, 4rem); letter-spacing: -.035em; line-height: 1.04; }
+    .hero__sub { margin-top: 22px; max-width: 44ch; font-size: clamp(1.05rem, .98rem + .4vw, 1.25rem); color: var(--text-2); }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .hero__actions .btn { flex: 1 1 100%; }
+    .hero__fig { margin: 0; }
+    .hero__frame { position: relative; isolation: isolate; }
+    .hero__photo {
+      aspect-ratio: 4 / 5; max-height: calc(100dvh - var(--header-h) - 96px); min-height: 320px; width: 100%;
+      overflow: hidden; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--bg-2);
     }
-
-    .plan-card__item svg {
-      width: 17px;
-      height: 17px;
-      color: var(--green);
-      flex-shrink: 0;
-      margin-top: 3px;
+    .hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+    .hero__frame::before {
+      content: ""; position: absolute; z-index: -1; inset: 22px -16px -16px 22px;
+      border-radius: var(--r-lg); background: var(--accent-tint); border: 1px solid var(--accent-line);
     }
-
-    /* ============ PARCERIA ============ */
-    .partnership {
-      display: grid;
-      gap: 1.4rem;
-    }
-
-    .partnership__card {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      min-width: 0;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    }
-
-    .partnership__card:hover {
-      transform: translateY(-3px);
-      border-color: var(--border-strong);
-      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, .45);
-    }
-
-    .partnership__card h3 {
-      font-size: 1.08rem;
-      margin-bottom: .65rem;
-      display: flex;
-      align-items: center;
-      gap: .65rem;
-    }
-
-    .partnership__card h3 svg {
-      width: 22px;
-      height: 22px;
-      color: var(--cyan);
-      flex-shrink: 0;
-    }
-
-    .partnership__card p {
-      color: var(--text-soft);
-      font-size: .95rem;
-      line-height: 1.6;
-    }
-
-    /* ============ FAQ ============ */
-    .faq {
-      max-width: 820px;
-    }
-
-    .faq__item {
-      border-bottom: 1px solid var(--border);
-      transition: border-color .2s ease;
-    }
-
-    .faq__item summary {
-      list-style: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1.5rem 0;
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.02rem;
-      transition: color .2s ease;
-    }
-
-    .faq__item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq__item:hover summary {
-      color: var(--cyan);
-    }
-
-    .faq__chevron {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      color: var(--text-mute);
-      transition: transform .28s cubic-bezier(.22, 1, .36, 1), color .2s ease;
-    }
-
-    .faq__item[open] .faq__chevron {
-      transform: rotate(180deg);
-      color: var(--cyan);
-    }
-
-    .faq__answer {
-      padding: 0 0 1.6rem;
-      color: var(--text-soft);
-      font-size: .96rem;
-      max-width: 66ch;
-      line-height: 1.65;
-    }
-
-    /* ============ CTA FINAL ============ */
-    .final-cta {
-      background: linear-gradient(135deg, rgba(41, 211, 238, .15), rgba(111, 123, 247, .13));
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-lg);
-      padding: 3.8rem 2.2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .65), 0 0 35px -10px rgba(41, 211, 238, .18);
-    }
-
-    .final-cta::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(41, 211, 238, .09), transparent 60%);
-      pointer-events: none;
-      animation: rotateBg 22s linear infinite;
-    }
-
-    @keyframes rotateBg {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .final-cta h2 {
-      font-size: clamp(1.7rem, 4.2vw, 2.3rem);
-      max-width: 24ch;
-      margin: 0 auto 1.1rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .final-cta p {
-      color: var(--text-soft);
-      max-width: 48ch;
-      margin: 0 auto 2rem;
-      position: relative;
-      z-index: 1;
-      font-size: 1.05rem;
-    }
-
-    .final-cta .btn {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ============ FOOTER ============ */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .footer__inner {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: center;
-      text-align: center;
-    }
-
-    .footer__social {
-      display: flex;
-      gap: 1.2rem;
-    }
-
-    .footer__social a {
-      color: var(--text-soft);
-      padding: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .03);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color .22s ease, transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-    }
-
-    .footer__social a:hover {
-      color: var(--cyan);
-      transform: translateY(-3px);
-      border-color: rgba(41, 211, 238, .4);
-      box-shadow: 0 4px 14px -4px rgba(41, 211, 238, .4);
-    }
-
-    .footer__social img {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-    }
-
-    .footer__social svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .footer small {
-      color: var(--text-mute);
-      font-size: .84rem;
-    }
-
-    /* ============ RESPONSIVE ============ */
-    @media (min-width: 760px) {
-      .hero__grid {
-        grid-template-columns: 1.05fr .95fr;
-      }
-
-      .compare {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .services {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .stack-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .case__showcase {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .plans {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .partnership {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
+    .hero__cap { margin-top: 30px; font-size: .92rem; color: var(--text-3); }
+    @media (min-width: 640px) { .hero__actions .btn { flex: 0 0 auto; } }
     @media (min-width: 900px) {
-      .method__steps {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.4rem;
-      }
-
-      .method__step {
-        padding-left: 0;
-        padding-top: 3.2rem;
-      }
-
-      .method__step::before {
-        top: 0;
-        left: 0;
-      }
-
-      .method__step::after {
-        left: 0;
-        right: -1.4rem;
-        top: 1.15rem;
-        bottom: auto;
-        width: auto;
-        height: 1px;
-      }
-
-      .method__step:last-child::after {
-        display: none;
-      }
+      .hero__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+      .hero__fig { justify-self: end; width: 100%; max-width: 470px; }
+      .hero__copy { padding-top: clamp(8px, 4.5vw, 64px); }
     }
 
-    @media (min-width: 980px) {
-      .nav {
-        display: block;
-      }
+    /* ============================================================
+       LOGOS (só logos, sem legendas)
+       ============================================================ */
+    .tools { padding: 8px 0 clamp(48px, 7vw, 88px); }
+    .tools__in { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 56px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .tools__lead { font-size: .92rem; color: var(--text-3); }
+    .tools ul { display: grid; grid-template-columns: repeat(3, auto); gap: 24px 40px; align-items: center; }
+    .tools svg { display: block; width: 28px; height: 28px; transition: opacity .2s; }
+    .tools li:hover svg { opacity: 0.8; }
+    .tools [aria-label="Meta Ads"] { color: #1877F2; }
+    .tools [aria-label="Google Analytics"] { color: #E37400; }
+    .tools [aria-label="WhatsApp Business"] { color: #25D366; }
+    @media (min-width: 720px) { .tools ul { display: flex; flex-wrap: wrap; gap: 24px 44px; } }
 
-      .header__cta {
-        display: inline-flex;
-      }
+    /* ============================================================
+       SEÇÕES
+       ============================================================ */
+    .section { padding-block: clamp(72px, 10vw, 128px); }
+    .section--tint { background: var(--bg-2); }
+    .head { max-width: 60ch; }
+    .head h2 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem); }
+    .head p { margin-top: 18px; color: var(--text-2); font-size: 1.1rem; }
+    .head + * { margin-top: clamp(40px, 6vw, 64px); }
 
-      .hamburger {
-        display: none;
-      }
+    /* Diferencial: linhas de definição */
+    .rows > li { display: grid; gap: 14px 48px; padding: 32px 0; border-top: 1px solid var(--line-strong); }
+    .rows h3 { display: flex; align-items: center; gap: 14px; font-size: 1.4rem; letter-spacing: -.02em; }
+    .rows h3 .ico { width: 30px; height: 30px; color: var(--accent-text); }
+    .rows p { max-width: 58ch; color: var(--text-2); font-size: 1.075rem; }
+    @media (min-width: 820px) { .rows > li { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; } }
 
-      .services {
-        grid-template-columns: repeat(3, 1fr);
+    /* Serviços: bento */
+    .bento { display: grid; gap: 16px; grid-template-columns: 1fr; }
+    .cell {
+      position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 12px;
+      min-height: 260px; padding: 28px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+      transition: border-color .25s, transform .4s var(--ease);
+    }
+    @media (hover: hover) { .cell:hover { border-color: var(--line-strong); transform: translateY(-3px); } }
+    .cell__glyph { width: 34px; height: 34px; color: var(--text); flex: none; }
+    .cell h3 { margin-top: auto; font-size: 1.5rem; letter-spacing: -.02em; }
+    .cell p { max-width: 40ch; color: var(--text-2); }
+    .cell--meta { background: var(--accent-tint); border-color: var(--accent-line); }
+    .cell--meta .cell__glyph { color: #1877F2; }
+    .cell--wpp { background: var(--deep); border-color: transparent; }
+    .cell--wpp .cell__glyph { color: #25D366; }
+    .cell--wpp h3 { color: var(--on-deep); }
+    .cell--wpp p { color: var(--on-deep-2); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .tag { padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: var(--r-pill); font: 500 .8rem var(--mono); color: var(--text-2); }
+    .cell__shot { margin: 12px -28px -28px; height: 190px; overflow: hidden; border-top: 1px solid var(--line); }
+    .cell__shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    @media (min-width: 768px) {
+      .bento { grid-template-columns: repeat(12, 1fr); }
+      .cell--meta { grid-column: span 7; }
+      .cell--google { grid-column: span 5; }
+      .cell--tiktok { grid-column: span 5; }
+      .cell--landing { grid-column: span 7; }
+      .cell--tracking { grid-column: span 7; }
+      .cell--wpp { grid-column: span 5; }
+      .cell--landing .cell__text { max-width: 50%; display: flex; flex-direction: column; gap: 12px; height: 100%; }
+      .cell__shot {
+        position: absolute; right: 28px; bottom: 0; width: min(42%, 290px); height: 84%; margin: 0;
+        border: 1px solid var(--line); border-bottom: 0; border-radius: 16px 16px 0 0;
       }
     }
+    @media (min-width: 1100px) {
+      .cell--tiktok { grid-column: span 4; }
+      .cell--landing { grid-column: span 8; }
+      .cell--tracking { grid-column: span 8; }
+      .cell--wpp { grid-column: span 4; }
+    }
 
-    
+    /* Método: passos + regras da parceria */
+    .method { display: grid; gap: 56px; }
+    .steps li { padding: 0 0 34px 26px; border-left: 1px solid var(--line-strong); }
+    .steps li:last-child { padding-bottom: 0; }
+    .steps h3 { font-size: 1.35rem; letter-spacing: -.02em; }
+    .steps p { margin-top: 8px; max-width: 52ch; color: var(--text-2); }
+    .terms { padding: 30px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); }
+    .terms > h3 { font-size: 1.3rem; }
+    .terms ul { margin-top: 8px; }
+    .terms li { display: grid; grid-template-columns: 22px 1fr; gap: 4px 14px; padding: 20px 0; border-top: 1px solid var(--line); }
+    .terms li:first-child { border-top: 0; }
+    .terms .ico { margin-top: 2px; color: var(--accent-text); }
+    .terms strong { font-weight: 600; }
+    .terms p { grid-column: 2; color: var(--text-2); font-size: .98rem; }
+    @media (min-width: 960px) {
+      .method { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(48px, 7vw, 96px); align-items: start; }
+      .terms { position: sticky; top: calc(var(--header-h) + 24px); }
+    }
+
+    /* Cases */
+    .case { display: grid; gap: 40px; align-items: center; }
+    .case__shots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+    .case__shots figure { margin: 0; }
+    .case__shots figure:nth-child(2) { margin-top: 44px; }
+    .case__shots img { width: 100%; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--surface); }
+    .case__shots figcaption { margin-top: 10px; font-size: .88rem; color: var(--text-3); }
+    .case__body h3 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); }
+    .case__body p { margin-top: 16px; color: var(--text-2); font-size: 1.05rem; max-width: 52ch; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .chip { padding: 7px 14px; border: 1px solid var(--line-strong); border-radius: var(--r-pill); font-size: .88rem; color: var(--text-2); }
+    .link {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
+      font-weight: 600; color: var(--accent-text); text-decoration: none;
+      border-bottom: 1px solid var(--accent-line); padding-bottom: 3px; transition: border-color .2s;
+    }
+    .link:hover { border-bottom-color: var(--accent-text); }
+    @media (max-width: 559px) {
+      .case__shots { display: flex; gap: 14px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .case__shots::-webkit-scrollbar { display: none; }
+      .case__shots figure { flex: 0 0 78%; scroll-snap-align: start; }
+      .case__shots figure:nth-child(2) { margin-top: 0; }
+    }
+    @media (min-width: 960px) { .case { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(48px, 7vw, 96px); } }
+
+    /* Modelos */
+    .plans { display: grid; gap: 20px; }
+    .plan--main {
+      padding: clamp(26px, 4vw, 40px); background: var(--surface);
+      border: 2px solid var(--accent); border-radius: var(--r-lg); box-shadow: var(--shadow);
+    }
+    .plan__label {
+      display: inline-block; padding: 5px 12px; margin-bottom: 18px;
+      border-radius: var(--r-pill); background: var(--accent-tint); color: var(--accent-text);
+      font-size: .82rem; font-weight: 600;
+    }
+    .plan h3 { font-size: 1.5rem; letter-spacing: -.02em; }
+    .plan--main h3 { font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.1rem); }
+    .plan > p { margin-top: 12px; color: var(--text-2); max-width: 52ch; }
+    .checks { display: grid; gap: 12px; margin-top: 24px; }
+    .checks li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; color: var(--text); }
+    .checks .ico { margin-top: 2px; color: var(--accent-text); }
+    .plan--main .btn { margin-top: 32px; }
+    .plans__rest { display: grid; align-content: start; }
+    .plans__rest .plan { padding: 30px 4px; border-top: 1px solid var(--line-strong); }
+    .plans__rest .plan:first-child { border-top: 0; padding-top: 6px; }
+    @media (min-width: 960px) {
+      .plans { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
+    }
+
+    /* FAQ */
+    .faq-grid { display: grid; gap: 40px; }
+    .faq-grid .head + * { margin-top: 0; }
+    .faq-grid .head h2 { font-size: clamp(1.9rem, 1.3rem + 2vw, 2.7rem); }
+    @media (min-width: 960px) {
+      .faq-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(48px, 7vw, 96px); align-items: start; }
+      .faq-grid .head { position: sticky; top: calc(var(--header-h) + 32px); }
+    }
+    .faq { max-width: 820px; }
+    .faq details { border-top: 1px solid var(--line-strong); }
+    .faq details:last-child { border-bottom: 1px solid var(--line-strong); }
+    .faq summary {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 24px 0; cursor: pointer; list-style: none;
+      font-size: 1.15rem; font-weight: 600; letter-spacing: -.01em;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary .ico { width: 22px; height: 22px; color: var(--text-3); transition: transform .3s var(--ease); }
+    .faq details[open] summary .ico { transform: rotate(180deg); }
+    .faq .answer { padding: 0 0 26px; max-width: 66ch; color: var(--text-2); }
+
+    /* CTA final */
+    .final {
+      display: grid; gap: 28px; align-items: end;
+      padding: clamp(32px, 6vw, 64px);
+      background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+      border: 1px solid var(--accent-line); border-radius: var(--r-lg);
+    }
+    .final h2 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem); max-width: 18ch; }
+    .final p { margin-top: 16px; max-width: 52ch; color: var(--text-2); font-size: 1.1rem; }
+    @media (min-width: 900px) { .final { grid-template-columns: 1fr auto; } }
+
+    /* Rodapé */
+    .footer { padding: 56px 0 48px; border-top: 1px solid var(--line); }
+    .footer__in { display: grid; gap: 32px; }
+    .footer__logo { width: 168px; border-radius: var(--r-sm); border: 1px solid var(--line); }
+    .footer__mail { display: inline-block; margin-top: 16px; color: var(--text-2); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+    .footer__mail:hover { color: var(--text); }
+    .social { display: flex; gap: 10px; }
+    .social a {
+      display: inline-grid; place-items: center; width: 44px; height: 44px;
+      border: 1px solid var(--line-strong); border-radius: var(--r-pill); color: var(--text);
+      transition: background-color .2s, transform .3s var(--ease);
+    }
+    .social a:hover { background: var(--bg-2); transform: translateY(-2px); }
+    .social .ico { width: 21px; height: 21px; }
+    .footer small { display: block; color: var(--text-3); font-size: .88rem; }
+    @media (min-width: 768px) {
+      .footer__in { grid-template-columns: 1fr auto; align-items: end; }
+      .footer small { grid-column: 1 / -1; padding-top: 28px; border-top: 1px solid var(--line); }
+    }
+    @media (max-width: 767px) { .footer { padding-bottom: 104px; } }
+
+    /* CTA fixo no celular */
+    .sticky {
+      position: fixed; inset: auto 0 0 0; z-index: var(--z-cta);
+      padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+      transform: translateY(105%); transition: transform .4s var(--ease);
+    }
+    .sticky.is-on { transform: none; }
+    .sticky .btn { width: 100%; }
+    @media (min-width: 768px) { .sticky { display: none; } }
+    @media (prefers-reduced-transparency: reduce) {
+      .sticky { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+    }
+
+    /* ============================================================
+       MOVIMENTO (só com preferência padrão; tudo com propósito:
+       hierarquia na entrada, sequência na rolagem, feedback nos botões)
+       ============================================================ */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+      @keyframes lift { from { transform: translateY(18px); } }
+      .enter { animation: rise .8s var(--ease) both; animation-delay: calc(var(--i, 0) * 90ms); }
+      .enter-t { animation: lift .9s var(--ease) both; animation-delay: .15s; }
+      .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 70ms); }
+      .js .reveal.is-in { opacity: 1; transform: none; }
+    }
   </style>
-
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2NKZJBX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<symbol id="i-arrow-right" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+<symbol id="i-whatsapp-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="i-caret-down" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 256 256" fill="currentColor"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 256 256" fill="currentColor"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></symbol>
+<symbol id="i-list" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></symbol>
+<symbol id="i-x" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+<symbol id="i-target" viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></symbol>
+<symbol id="i-gauge" viewBox="0 0 256 256" fill="currentColor"><path d="M207.06,72.67A111.24,111.24,0,0,0,128,40h-.4C66.07,40.21,16,91,16,153.13V176a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V152A111.25,111.25,0,0,0,207.06,72.67ZM224,176H119.71l54.76-75.3a8,8,0,0,0-12.94-9.42L99.92,176H32V153.13c0-3.08.15-6.12.43-9.13H56a8,8,0,0,0,0-16H35.27c10.32-38.86,44-68.24,84.73-71.66V80a8,8,0,0,0,16,0V56.33A96.14,96.14,0,0,1,221,128H200a8,8,0,0,0,0,16h23.67c.21,2.65.33,5.31.33,8Z"/></symbol>
+<symbol id="i-chat-circle-text" viewBox="0 0 256 256" fill="currentColor"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></symbol>
+<symbol id="i-chart-line-up" viewBox="0 0 256 256" fill="currentColor"><path d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,16,0V156.69l50.34-50.35a8,8,0,0,1,11.32,0L128,132.69,180.69,80H160a8,8,0,0,1,0-16h40a8,8,0,0,1,8,8v40a8,8,0,0,1-16,0V91.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31l-56,56V200H224A8,8,0,0,1,232,208Z"/></symbol>
+<symbol id="i-browser" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V88H40V56Zm0,144H40V104H216v96Z"/></symbol>
+<symbol id="i-plugs-connected" viewBox="0 0 256 256" fill="currentColor"><path d="M237.66,18.34a8,8,0,0,0-11.32,0l-52.4,52.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L100,88.69l-6.34-6.35A8,8,0,0,0,82.34,93.66L88.69,100,65.37,123.31a32,32,0,0,0,0,45.26l5.38,5.37-52.41,52.4a8,8,0,0,0,11.32,11.32l52.4-52.41,5.37,5.38a32,32,0,0,0,45.26,0L156,167.31l6.34,6.35a8,8,0,0,0,11.32-11.32L167.31,156l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,52.41-52.4A8,8,0,0,0,237.66,18.34Zm-116.29,161a16,16,0,0,1-22.62,0L76.69,157.25a16,16,0,0,1,0-22.62L100,111.31,144.69,156Zm57.94-57.94L156,144.69,111.31,100l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22A16,16,0,0,1,179.31,121.37ZM88.57,35A8,8,0,0,1,103.43,29l8,20A8,8,0,0,1,96.57,55ZM24.57,93A8,8,0,0,1,35,88.57l20,8A8,8,0,0,1,49,111.43l-20-8A8,8,0,0,1,24.57,93ZM231.43,163a8,8,0,0,1-10.4,4.46l-20-8A8,8,0,1,1,207,144.57l20,8A8,8,0,0,1,231.43,163Zm-64,58.06A8,8,0,0,1,152.57,227l-8-20A8,8,0,0,1,159.43,201Z"/></symbol>
+<symbol id="i-github-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/></symbol>
+<symbol id="i-linkedin-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"/></symbol>
+<symbol id="i-instagram-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></symbol>
+<symbol id="i-envelope-simple" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol>
+<symbol id="b-meta" viewBox="0 0 24 24" fill="currentColor"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></symbol>
+<symbol id="b-googleads" viewBox="0 0 256 230"><path d="M5.888,166.405103 L90.88,20.9 C101.676138,27.2558621 156.115862,57.3844138 164.908138,63.1135172 L79.9161379,208.627448 C70.6206897,220.906621 -5.888,185.040138 5.888,166.396276 L5.888,166.405103 Z" fill="#FBBC04"/><path d="M250.084224,166.401789 L165.092224,20.9055131 C153.210293,1.13172 127.619121,-6.05393517 106.600638,5.62496138 C85.582155,17.3038579 79.182155,42.4624786 91.0640861,63.1190303 L176.056086,208.632961 C187.938017,228.397927 213.52919,235.583582 234.547672,223.904686 C254.648086,212.225789 261.966155,186.175582 250.084224,166.419444 L250.084224,166.401789 Z" fill="#4285F4"/><ellipse fill="#34A853" cx="42.6637241" cy="187.924414" rx="42.6637241" ry="41.6044138"/></symbol>
+<symbol id="b-googletagmanager" viewBox="0 0 256 256"><polygon fill="#8AB4F8" points="150.261818 245.516364 105.825455 202.185455 201.258182 104.730909 247.265455 149.821818"/><path d="M150.450909,53.9381818 L106.174545,8.73090909 L9.36,104.629091 C-3.12,117.109091 -3.12,137.341818 9.36,149.836364 L104.72,245.821818 L149.810909,203.64 L77.1563636,127.232727 L150.450909,53.9381818 Z" fill="#4285F4"/><path d="M246.625455,105.370909 L150.625455,9.37090909 C138.130909,-3.12363636 117.869091,-3.12363636 105.374545,9.37090909 C92.88,21.8654545 92.88,42.1272727 105.374545,54.6218182 L201.374545,150.621818 C213.869091,163.116364 234.130909,163.116364 246.625455,150.621818 C259.12,138.127273 259.12,117.865455 246.625455,105.370909 Z" fill="#8AB4F8"/><circle fill="#246FDB" cx="127.265455" cy="224.730909" r="31.2727273"/></symbol>
+<symbol id="b-googleanalytics" viewBox="0 0 24 24" fill="currentColor"><path d="M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"/></symbol>
+<symbol id="b-tiktok" viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.9,.9)" d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/><path fill="#FE2C55" transform="translate(.9,-.9)" d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/><path fill="currentColor" d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></symbol>
+<symbol id="b-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+</svg>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <div class="sentinel" id="sentinel" aria-hidden="true"></div>
 
-  <!-- ==================== ÍCONES FLUTUANTES NO FUNDO (AMBIENT DRIFT) ==================== -->
-  <div class="bg-floating-icons" aria-hidden="true">
-    <div class="bg-icon bg-icon--1">
-      <img src="imgs/metaLogo.svg" alt="Meta Ads">
-    </div>
-    <div class="bg-icon bg-icon--2">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#29d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    </div>
-    <div class="bg-icon bg-icon--3">
-      <img src="imgs/googleAdsLogo.svg" alt="Google Ads">
-    </div>
-    <div class="bg-icon bg-icon--4">
-      <img src="imgs/tiktokLogo.svg" alt="TikTok" fetchpriority="high">
-    </div>
-    <div class="bg-icon bg-icon--5">
-      <svg viewBox="0 0 48 48" fill="none">
-        <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00" />
-        <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400" />
-        <circle cx="13" cy="35" r="5" fill="#E37400" />
-      </svg>
-    </div>
-    <div class="bg-icon bg-icon--6">
-      <img src="imgs/whatsappLogo.svg" alt="WhatsApp">
-    </div>
-  </div>
-
-  <!-- ==================== HEADER ==================== -->
   <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="#topo" class="logo">
-        <span class="logo__mark"><img src="imgs/logo.jpg" alt="Iago Carvalho" width="38" height="38" fetchpriority="high" loading="eager" decoding="sync"></span>
-        <span>
-          Iago Carvalho
-          <span class="logo__sub">Tráfego & Engenharia Web</span>
+    <div class="wrap header__in">
+      <a class="brand" href="#topo" aria-label="Iago Carvalho, ir para o topo">
+        <span class="brand__tile"><img src="imgs/logo-mark.webp" alt="" width="96" height="96"></span>
+        <span class="brand__txt">
+          <span class="brand__name">Iago Carvalho</span>
+          <span class="brand__sub">Tráfego &amp; Engenharia Web</span>
         </span>
       </a>
 
       <nav class="nav" aria-label="Navegação principal">
-        <ul class="nav__list" id="navList">
-          <li><a href="#diferencial" class="nav__link">Diferenciais</a></li>
-          <li><a href="#stack" class="nav__link">Tecnologias</a></li>
-          <li><a href="#servicos" class="nav__link">Serviços</a></li>
-          <li><a href="#metodo" class="nav__link">Metodologia</a></li>
-          <li><a href="#cases" class="nav__link">Cases</a></li>
-          <li><a href="#planos" class="nav__link">Modelos</a></li>
-          <li><a href="#faq" class="nav__link">FAQ</a></li>
+        <ul id="navList">
+          <li><a href="#diferencial">Diferenciais</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#metodo">Metodologia</a></li>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#planos">Modelos</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </nav>
 
       <div class="header__actions">
-        <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary btn--sm header__cta" target="_blank" rel="noopener noreferrer">
-          Falar no WhatsApp
+        <button class="icon-btn theme" id="theme" type="button" aria-label="Alternar tema claro e escuro">
+          <svg class="ico i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="ico i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a class="btn btn--primary btn--sm header__cta" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="header">
+          <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+          Pedir diagnóstico
         </a>
-        <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNav">
-          <span class="hamburger__bar"></span>
-          <span class="hamburger__bar"></span>
-          <span class="hamburger__bar"></span>
+        <button class="icon-btn burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+          <svg class="ico i-list" aria-hidden="true"><use href="#i-list"/></svg>
+          <svg class="ico i-x" aria-hidden="true"><use href="#i-x"/></svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Navegação Mobile -->
-  <nav class="mobile-nav" id="mobileNav" aria-label="Navegação mobile">
-    <ul class="mobile-nav__list">
+  <nav class="menu" id="menu" aria-label="Navegação mobile">
+    <ul>
       <li><a href="#diferencial">Diferenciais</a></li>
-      <li><a href="#stack">Tecnologias</a></li>
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#metodo">Metodologia</a></li>
       <li><a href="#cases">Cases</a></li>
       <li><a href="#planos">Modelos</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#agendar">Agendar Diagnóstico</a></li>
     </ul>
-    <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener noreferrer" style="width:100%; justify-content:center;">
-      Falar no WhatsApp
+    <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="menu">
+      <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+      Pedir diagnóstico
     </a>
   </nav>
 
-  <div id="topo"></div>
+  <main id="conteudo">
+    <div id="topo"></div>
 
-  <main>
-
-    <!-- ==================== HERO SECTION ==================== -->
+    <!-- ========== HERO ========== -->
     <section class="hero">
-      <div class="hero__glow" aria-hidden="true"></div>
-      <div class="container hero__grid">
-        <div>
-          <span class="eyebrow reveal" style="animation-delay:.05s">Tráfego Pago de Precisão & Otimização de Código</span>
-          <h1 class="reveal" style="animation-delay:.12s">Pare de pagar por clique sem venda: Em 48h te mostro exatamente onde seu dinheiro está vazando</h1>
-          <p class="hero__sub reveal" style="animation-delay:.19s">
-            Duas competências raras no mercado digital: estratégia avançada de Meta Ads, Google Ads e TikTok Ads com a capacidade de um desenvolvedor web para eliminar a lentidão do seu site e garantir rastreamento 100% à prova de falhas.
-          </p>
-          <div class="hero__actions reveal" style="animation-delay:.26s">
-            <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-              Quero escalar minhas vendas
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow enter" style="--i:0">Gestor de tráfego pago e desenvolvedor web</span>
+          <h1>Pare de pagar por clique sem venda.</h1>
+          <p class="hero__sub enter" style="--i:2">Em 48 horas eu mostro onde sua verba está vazando: nos anúncios, no rastreamento ou na página lenta.</p>
+          <div class="hero__actions enter" style="--i:3" data-watch>
+            <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="hero">
+              <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+              Pedir diagnóstico
             </a>
-            <a href="#metodo" class="btn btn--ghost">Conhecer o método</a>
-          </div>
-          <div class="hero__badges reveal" style="animation-delay:.33s">
-            <!-- Badge Meta Oficial usando metaLogo.svg -->
-            <span class="badge">
-              <img src="imgs/metaLogo.svg" alt="Meta Ads" class="badge-icon-img">
-              Meta Ads Verificado
-            </span>
-            <!-- Badge Google Ads Oficial usando googleAdsLogo.svg -->
-            <span class="badge">
-              <img src="imgs/googleAdsLogo.svg" alt="Google Ads" class="badge-icon-img">
-              Google Ads Partner
-            </span>
-            <!-- Badge TikTok Ads Oficial usando tiktokLogo.svg -->
-            <span class="badge">
-              <img src="imgs/tiktokLogo.svg" alt="TikTok Ads" class="badge-icon-img">
-              TikTok Ads
-            </span>
-            <!-- Badge GTM / CAPI -->
-            <span class="badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green)">
-                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-              </svg>
-              Pixel & CAPI Server-Side
-            </span>
+            <a class="btn btn--ghost" href="#cases">Ver o case <svg class="ico arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
 
-        <div class="hero__visual reveal" style="animation-delay:.2s">
-          <div class="panel">
-            <div class="panel__top">
-              <span class="panel__dot-row">
-                <span class="panel__dot"></span>
-                <span class="panel__dot"></span>
-                <span class="panel__dot"></span>
-              </span>
-              <span class="panel__label">painel ativo · últimos 30 dias</span>
-            </div>
-            <div class="panel__metrics">
-              <div class="metric">
-                <div class="metric__value up" data-counter="4.8" data-suffix="x">4,8x</div>
-                <div class="metric__label">ROAS Médio</div>
-              </div>
-              <div class="metric">
-                <div class="metric__value" data-counter="12.40" data-prefix="R$ " data-decimal=",">R$ 12,40</div>
-                <div class="metric__label">Custo por Lead</div>
-              </div>
-              <div class="metric">
-                <div class="metric__value up" data-counter="98" data-suffix="%">98%</div>
-                <div class="metric__label">Eventos Medidos</div>
-              </div>
-            </div>
-            <div class="panel__chart" aria-hidden="true">
-              <div class="panel__bar" style="height:38%" title="Semana 1"></div>
-              <div class="panel__bar" style="height:55%" title="Semana 2"></div>
-              <div class="panel__bar" style="height:46%" title="Semana 3"></div>
-              <div class="panel__bar" style="height:74%" title="Semana 4"></div>
-              <div class="panel__bar" style="height:66%" title="Semana 5"></div>
-              <div class="panel__bar" style="height:90%" title="Semana 6"></div>
-              <div class="panel__bar" style="height:84%" title="Hoje"></div>
-            </div>
-            <div class="panel__bubble">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-              Novo pedido qualificado confirmado via WhatsApp
-            </div>
-          </div>
-        </div>
+        <figure class="hero__fig enter-t">
+          <div class="hero__frame"><div class="hero__photo">
+            <img src="imgs/iago-720.webp"
+                 srcset="imgs/iago-480.webp 480w, imgs/iago-720.webp 720w, imgs/iago-960.webp 960w"
+                 sizes="(min-width: 900px) 470px, 90vw"
+                 width="720" height="900" decoding="async"
+                 alt="Iago Carvalho, de blazer azul-marinho e braços cruzados, em um escritório">
+          </div></div>
+          <figcaption class="hero__cap">Você fala direto comigo, sem atendente no meio.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- ==================== LINHA HORIZONTAL DINÂMICA (MARQUEE AJUSTADO SEM CORTE) ==================== -->
-    <section class="ticker-section" aria-label="Plataformas e Ferramentas">
-      <div class="ticker-header">
-        <span>Plataformas Oficiais & Tecnologias que Domino</span>
-      </div>
-      <div class="ticker-wrapper" id="tickerWrapper">
-        <div class="ticker-content" id="tickerContent">
-          <!-- Bloco 1 de itens usando os arquivos reais de imgs/ -->
-          <div class="ticker-items">
-            <!-- Meta Ads -->
-            <div class="ticker-item">
-              <img src="imgs/metaLogo.svg" alt="Meta Ads" class="ticker-img">
-              Meta Ads (Instagram & Facebook)
-            </div>
-            <!-- Google Ads -->
-            <div class="ticker-item">
-              <img src="imgs/googleAdsLogo.svg" alt="Google Ads" class="ticker-img">
-              Google Ads & Pesquisa
-            </div>
-            <!-- TikTok Ads -->
-            <div class="ticker-item">
-              <img src="imgs/tiktokLogo.svg" alt="TikTok Ads" class="ticker-img">
-              TikTok Ads
-            </div>
-            <!-- WhatsApp Business -->
-            <div class="ticker-item">
-              <img src="imgs/whatsappLogo.svg" alt="WhatsApp Business" class="ticker-img">
-              WhatsApp Business
-            </div>
-            <!-- Instagram -->
-            <div class="ticker-item">
-              <img src="imgs/instagramLogo.svg" alt="Instagram Oficial" class="ticker-img">
-              Instagram
-            </div>
-            <!-- Google Tag Manager -->
-            <div class="ticker-item">
-              <svg viewBox="0 0 48 48" fill="none">
-                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8" />
-                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4" />
-                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF" />
-              </svg>
-              Google Tag Manager (GTM)
-            </div>
-            <!-- Google Analytics 4 -->
-            <div class="ticker-item">
-              <svg viewBox="0 0 48 48" fill="none">
-                <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00" />
-                <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400" />
-                <circle cx="13" cy="35" r="5" fill="#E37400" />
-              </svg>
-              Google Analytics 4 (GA4)
-            </div>
-            <!-- Meta CAPI -->
-            <div class="ticker-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3ddc97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              API de Conversões (CAPI)
-            </div>
-            <!-- Web Dev -->
-            <div class="ticker-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#29d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-              HTML5, Modern CSS & JS
-            </div>
-            <!-- Supabase & Docker -->
-            <div class="ticker-item">
-              <svg viewBox="0 0 48 48" fill="none">
-                <path d="M26.5 44c-.9 1-2.5.4-2.5-.9V27.5h16.2c1.7 0 2.6 2.1 1.4 3.3L26.5 44z" fill="#3ECF8E" />
-                <path d="M21.5 4c.9-1 2.5-.4 2.5.9V20.5H7.8c-1.7 0-2.6-2.1-1.4-3.3L21.5 4z" fill="#249361" />
-              </svg>
-              Supabase & Docker
-            </div>
-            <!-- LinkedIn -->
-            <div class="ticker-item">
-              <svg viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="4" width="40" height="40" rx="8" fill="#0A66C2" />
-                <circle cx="15" cy="14" r="3.5" fill="#FFFFFF" />
-                <rect x="11.5" y="19.5" width="7" height="17" fill="#FFFFFF" />
-                <path d="M22.5 19.5h6.6v2.4h.1c.9-1.7 3.1-2.9 5.8-2.9 6.2 0 7.3 4.1 7.3 9.4V36.5h-7v-7.9c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.2v8h-7.2V19.5z" fill="#FFFFFF" />
-              </svg>
-              LinkedIn
-            </div>
-            <!-- GitHub -->
-            <div class="ticker-item">
-              <svg viewBox="0 0 24 24" fill="#FFFFFF">
-                <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
-              </svg>
-              GitHub (Open Source)
-            </div>
-          </div>
-
-          <!-- Bloco 2: Duplicação para loop contínuo e infinito -->
-          <div class="ticker-items" aria-hidden="true">
-            <div class="ticker-item">
-              <img src="imgs/metaLogo.svg" alt="Meta Ads" class="ticker-img">
-              Meta Ads (Instagram & Facebook)
-            </div>
-            <div class="ticker-item">
-              <img src="imgs/googleAdsLogo.svg" alt="Google Ads" class="ticker-img">
-              Google Ads & Pesquisa
-            </div>
-            <div class="ticker-item">
-              <img src="imgs/tiktokLogo.svg" alt="TikTok Ads" class="ticker-img">
-              TikTok Ads
-            </div>
-            <div class="ticker-item">
-              <img src="imgs/whatsappLogo.svg" alt="WhatsApp Business" class="ticker-img">
-              WhatsApp Business
-            </div>
-            <div class="ticker-item">
-              <img src="imgs/instagramLogo.svg" alt="Instagram Oficial" class="ticker-img">
-              Instagram
-            </div>
-            <div class="ticker-item">
-              <svg viewBox="0 0 48 48" fill="none">
-                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8" />
-                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4" />
-                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF" />
-              </svg>
-              Google Tag Manager (GTM)
-            </div>
-            <div class="ticker-item">
-              <svg viewBox="0 0 48 48" fill="none">
-                <rect x="30" y="8" width="10" height="32" rx="5" fill="#F9AB00" />
-                <rect x="19" y="18" width="10" height="22" rx="5" fill="#E37400" />
-                <circle cx="13" cy="35" r="5" fill="#E37400" />
-              </svg>
-              Google Analytics 4 (GA4)
-            </div>
-            <div class="ticker-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3ddc97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              API de Conversões (CAPI)
-            </div>
-            <div class="ticker-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#29d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-              HTML5, Modern CSS & JS
-            </div>
-            <div class="ticker-item">
-              <svg viewBox="0 0 48 48" fill="none">
-                <path d="M26.5 44c-.9 1-2.5.4-2.5-.9V27.5h16.2c1.7 0 2.6 2.1 1.4 3.3L26.5 44z" fill="#3ECF8E" />
-                <path d="M21.5 4c.9-1 2.5-.4 2.5.9V20.5H7.8c-1.7 0-2.6-2.1-1.4-3.3L21.5 4z" fill="#249361" />
-              </svg>
-              Supabase & Docker
-            </div>
-            <div class="ticker-item">
-              <svg viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="4" width="40" height="40" rx="8" fill="#0A66C2" />
-                <circle cx="15" cy="14" r="3.5" fill="#FFFFFF" />
-                <rect x="11.5" y="19.5" width="7" height="17" fill="#FFFFFF" />
-                <path d="M22.5 19.5h6.6v2.4h.1c.9-1.7 3.1-2.9 5.8-2.9 6.2 0 7.3 4.1 7.3 9.4V36.5h-7v-7.9c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.2v8h-7.2V19.5z" fill="#FFFFFF" />
-              </svg>
-              LinkedIn
-            </div>
-            <div class="ticker-item">
-              <svg viewBox="0 0 24 24" fill="#FFFFFF">
-                <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
-              </svg>
-              GitHub (Open Source)
-            </div>
-          </div>
-        </div>
+    <!-- ========== LOGOS ========== -->
+    <section class="tools" aria-label="Plataformas e ferramentas">
+      <div class="wrap tools__in">
+        <p class="tools__lead">Plataformas que gerencio e integro</p>
+        <ul>
+          <li><svg role="img" aria-label="Meta Ads" viewBox="0 0 24 24" fill="currentColor"><use href="#b-meta"/></svg></li>
+          <li><svg role="img" aria-label="Google Ads" viewBox="0 0 256 230"><use href="#b-googleads"/></svg></li>
+          <li><svg role="img" aria-label="TikTok Ads" viewBox="0 0 24 24"><use href="#b-tiktok"/></svg></li>
+          <li><svg role="img" aria-label="Google Tag Manager" viewBox="0 0 256 256"><use href="#b-googletagmanager"/></svg></li>
+          <li><svg role="img" aria-label="Google Analytics" viewBox="0 0 24 24" fill="currentColor"><use href="#b-googleanalytics"/></svg></li>
+          <li><svg role="img" aria-label="WhatsApp Business" viewBox="0 0 24 24" fill="currentColor"><use href="#b-whatsapp"/></svg></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ==================== DIFERENCIAL ==================== -->
+    <!-- ========== DIFERENCIAL ========== -->
     <section class="section" id="diferencial">
-      <div class="container">
-        <div class="section-head reveal-on-scroll">
-          <span class="eyebrow">Diferencial Técnico & Estratégico</span>
-          <h2>A diferença real entre subir anúncio e fazer a sua empresa faturar</h2>
-          <p>A maioria dos gestores de tráfego limita-se ao gerenciador de anúncios e culpa o algoritmo. Eu vou até a raiz do problema: na velocidade, no rastreamento e no código do seu site.</p>
+      <div class="wrap">
+        <div class="head reveal">
+          <h2>O anúncio é só metade do problema.</h2>
+          <p>Muita verba se perde na página lenta, no evento que não dispara e no atendimento demorado. Como também programo, eu resolvo tudo isso sem terceirizar.</p>
         </div>
-
-        <div class="compare reveal-on-scroll">
-          <div class="compare__col compare__col--common">
-            <div class="compare__head">
-              <span class="compare__avatar">🤷</span>
-              <div class="compare__title">Gestor Comum de Tráfego<span>o modelo superficial do mercado</span></div>
-            </div>
-            <ul class="compare__list">
-              <li class="compare__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-                Culpa o algoritmo ou o seu produto quando as vendas não aparecem.
-              </li>
-              <li class="compare__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-                Não sabe inspecionar código, resolver lentidão ou editar páginas.
-              </li>
-              <li class="compare__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-                Tracking configurado pela metade; dados bloqueados pelo iOS e adblockers.
-              </li>
-              <li class="compare__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-                Entrega relatórios repletos de cliques sem correlação com faturamento real.
-              </li>
-            </ul>
-          </div>
-          <div class="compare__col compare__col--you">
-            <div class="compare__head">
-              <span class="compare__avatar"><img src="imgs/minhaFoto.jpg" alt="Iago Carvalho" loading="lazy"></span>
-              <div class="compare__title">Iago Carvalho<span>Gestor de Tráfego + Desenvolvedor Web</span></div>
-            </div>
-            <ul class="compare__list">
-              <li class="compare__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Tracking à prova de falhas: API de Conversões (CAPI) + GTM Server-Side configurados na fonte.
-              </li>
-              <li class="compare__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Otimização pesada de tempo de carregamento: páginas que abrem em menos de 1,5s no mobile.
-              </li>
-              <li class="compare__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Integração de catálogos dinâmicos, checkout limpo e automações comerciais diretas.
-              </li>
-              <li class="compare__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Análises orientadas a ROAS e margem líquida, com acompanhamento de ponta a ponta.
-              </li>
-            </ul>
-          </div>
-        </div>
+        <ul class="rows">
+          <li class="reveal">
+            <h3><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg>Rastreamento no código</h3>
+            <p>Pixel, API de Conversões e GTM instalados direto no código, com eventos deduplicados, para o Meta e o Google saberem quem realmente compra.</p>
+          </li>
+          <li class="reveal" style="--i:1">
+            <h3><svg class="ico" aria-hidden="true"><use href="#i-gauge"/></svg>Página que não trava</h3>
+            <p>Se a página que recebe o clique for lenta ou quebrar no celular, eu mesmo corrijo o código. Você não precisa contratar outro profissional.</p>
+          </li>
+          <li class="reveal" style="--i:2">
+            <h3><svg class="ico" aria-hidden="true"><use href="#i-chat-circle-text"/></svg>Atendimento conectado</h3>
+            <p>Anúncio, mensagem de abertura e catálogo ligados entre si, para o lead chegar à conversa já sabendo o que quer.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- ==================== STACK DE ENGENHARIA & CONVERSÃO ==================== -->
-    <section class="section section-alt" id="stack">
-      <div class="container">
-        <div class="section-head reveal-on-scroll">
-          <span class="eyebrow">Arquitetura de Vendas</span>
-          <h2>Por que a união de tráfego com código dobra o retorno do anúncio</h2>
-          <p>Mais de 40% das pessoas desistem de comprar se a página demorar mais de 3 segundos para carregar. Nossa infraestrutura fecha todas as brechas de perda de dinheiro.</p>
+    <!-- ========== SERVIÇOS ========== -->
+    <section class="section" id="servicos" style="padding-top:0">
+      <div class="wrap">
+        <div class="head reveal">
+          <h2>O que eu monto e gerencio para você</h2>
+          <p>Cada serviço cobre uma etapa do caminho entre o anúncio e a venda.</p>
         </div>
-
-        <div class="stack-grid">
-          <div class="stack-card reveal-on-scroll">
-            <div class="stack-card__header">
-              <div class="stack-card__icon">
-                <img src="imgs/metaLogo.svg" alt="Meta Ads">
-              </div>
-              <div>
-                <span class="stack-card__badge">Aquisição de Alto Volume</span>
-                <h3>Meta Ads & Criativos Dinâmicos</h3>
-              </div>
-            </div>
-            <p>Construção de campanhas de tráfego direto, mensagens no WhatsApp e remarketing com criativos validados em vídeo para Instagram e Facebook. Foco em segmentação apurada e escala sem desperdício.</p>
-            <div class="stack-card__tags">
-              <span class="stack-card__tag">Públicos Lookalike</span>
-              <span class="stack-card__tag">Advantage+</span>
-              <span class="stack-card__tag">WhatsApp Direto</span>
-            </div>
-          </div>
-
-          <div class="stack-card reveal-on-scroll">
-            <div class="stack-card__header">
-              <div class="stack-card__icon">
-                <img src="imgs/googleAdsLogo.svg" alt="Google Ads">
-              </div>
-              <div>
-                <span class="stack-card__badge">Intenção de Compra Imediata</span>
-                <h3>Google Ads & Performance Max</h3>
-              </div>
-            </div>
-            <p>Captura de clientes que já estão digitando o nome do seu serviço ou produto no Google. Campanhas de pesquisa com índice de qualidade elevado que derrubam o custo por clique e aumentam a taxa de conversão.</p>
-            <div class="stack-card__tags">
-              <span class="stack-card__tag">Rede de Pesquisa</span>
-              <span class="stack-card__tag">Google Shopping</span>
-              <span class="stack-card__tag">Remarketing Smart</span>
-            </div>
-          </div>
-
-          <div class="stack-card reveal-on-scroll">
-            <div class="stack-card__header">
-              <div class="stack-card__icon">
-                <svg viewBox="0 0 48 48" fill="none">
-                  <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8" />
-                  <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4" />
-                  <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF" />
-                </svg>
-              </div>
-              <div>
-                <span class="stack-card__badge">Inteligência & Precisão de Dados</span>
-                <h3>GTM Server-Side & Meta CAPI</h3>
-              </div>
-            </div>
-            <p>Rastreamento avançado diretamente do servidor para contornar bloqueadores de anúncios e restrições do iOS. Os algoritmos do Meta e Google recebem 98% dos eventos, treinando a IA com os compradores certos.</p>
-            <div class="stack-card__tags">
-              <span class="stack-card__tag">Eventos Customizados</span>
-              <span class="stack-card__tag">DataLayer Avançado</span>
-              <span class="stack-card__tag">Pixel Deduplicado</span>
-            </div>
-          </div>
-
-          <div class="stack-card reveal-on-scroll">
-            <div class="stack-card__header">
-              <div class="stack-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#29d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                </svg>
-              </div>
-              <div>
-                <span class="stack-card__badge">Velocidade & Retenção</span>
-                <h3>Páginas Rápidas que não Travam</h3>
-              </div>
-            </div>
-            <p>Desenvolvimento em código leve e moderno. Sem temas pesados que demoram 5 segundos para abrir. Cada visitante que clica no seu anúncio entra instantaneamente na página de vendas, maximizando o ROI.</p>
-            <div class="stack-card__tags">
-              <span class="stack-card__tag">Core Web Vitals 95+</span>
-              <span class="stack-card__tag">Mobile-First</span>
-              <span class="stack-card__tag">Zero Fuga de Tráfego</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SERVIÇOS (COM OS SVGS REAIS) ==================== -->
-    <section class="section" id="servicos">
-      <div class="container">
-        <div class="section-head reveal-on-scroll">
-          <span class="eyebrow">Serviços Especializados</span>
-          <h2>O que eu estruturo e gerencio para a sua empresa</h2>
-          <p>Cada serviço atua como uma engrenagem de um ecossistema completo para atrair, engajar e transformar tráfego em vendas recorrentes.</p>
-        </div>
-
-        <div class="services">
-          <!-- Card 1: Meta Ads Oficial -->
-          <article class="service reveal-on-scroll">
-            <div class="service__icon">
-              <img src="imgs/metaLogo.svg" alt="Meta Ads">
-            </div>
-            <h3>Meta Ads (Instagram & Facebook)</h3>
-            <p>Campanhas de aquisição escaláveis, mensagens diretas para WhatsApp Comercial e Direct, catálogo de produtos interativo e remarketing para quem abandonou o carrinho.</p>
+        <div class="bento">
+          <article class="cell cell--meta reveal">
+            <svg class="cell__glyph" role="img" aria-label="Meta" viewBox="0 0 24 24"><use href="#b-meta"/></svg>
+            <h3>Meta Ads</h3>
+            <p>Instagram e Facebook. Campanhas para mensagem no WhatsApp, catálogo e remarketing de quem quase comprou.</p>
           </article>
 
-          <!-- Card 2: TikTok Ads Oficial -->
-          <article class="service reveal-on-scroll">
-            <div class="service__icon">
-              <img src="imgs/tiktokLogo.svg" alt="TikTok Ads">
-            </div>
-            <h3>TikTok Ads & Vídeos Curtos</h3>
-            <p>Estratégia de anúncios verticais dinâmicos desenhados para prender os primeiros 3 segundos de atenção, aproveitando o público de alto engajamento da rede.</p>
+          <article class="cell cell--google reveal" style="--i:1">
+            <svg class="cell__glyph" role="img" aria-label="Google Ads" viewBox="0 0 256 230"><use href="#b-googleads"/></svg>
+            <h3>Google Ads</h3>
+            <p>Pesquisa, Performance Max e Shopping para aparecer na hora em que o cliente já está procurando.</p>
           </article>
 
-          <!-- Card 3: Google Ads Oficial -->
-          <article class="service reveal-on-scroll">
-            <div class="service__icon">
-              <img src="imgs/googleAdsLogo.svg" alt="Google Ads">
-            </div>
-            <h3>Gestão de Google Ads</h3>
-            <p>Posicionamento no topo das buscas do Google para palavras-chave de intenção comercial explícita. O seu anúncio aparece na hora exata em que o cliente precisa do seu serviço.</p>
+          <article class="cell cell--tiktok reveal">
+            <svg class="cell__glyph" role="img" aria-label="TikTok" viewBox="0 0 24 24"><use href="#b-tiktok"/></svg>
+            <h3>TikTok Ads</h3>
+            <p>Vídeos verticais pensados para prender a atenção nos três primeiros segundos.</p>
           </article>
 
-          <!-- Card 4: Landing Pages & Código -->
-          <article class="service reveal-on-scroll">
-            <div class="service__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#29d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
+          <article class="cell cell--landing reveal" style="--i:1">
+            <div class="cell__text">
+              <svg class="cell__glyph" aria-hidden="true"><use href="#i-browser"/></svg>
+              <h3>Landing pages</h3>
+              <p>Páginas leves, feitas em código, para o clique do anúncio virar conversa ou compra.</p>
             </div>
-            <h3>Landing Pages de Alta Conversão</h3>
-            <p>Criação e refatoração de páginas focadas 100% em conversão: velocidade absurda de abertura, arquitetura de persuasão, catálogo interativo e compatibilidade total com mobile.</p>
+            <div class="cell__shot"><img src="imgs/velha-manna-catalogo.webp" alt="Catálogo de produtos do site do Ateliê Velha Manna" width="880" height="912" loading="lazy" decoding="async"></div>
           </article>
 
-          <!-- Card 5: Rastreamento & GTM/GA4 -->
-          <article class="service reveal-on-scroll">
-            <div class="service__icon">
-              <svg viewBox="0 0 48 48" fill="none">
-                <path d="M24 4L7 13.8v19.6L24 43.2l17-9.8V13.8L24 4z" fill="#8AB4F8" />
-                <path d="M24 13.6L12.5 20.2v13.2L24 40l11.5-6.6V20.2L24 13.6z" fill="#4285F4" />
-                <path d="M24 23.2l-5.7 3.3v6.6L24 36.4l5.7-3.3v-6.6L24 23.2z" fill="#FFFFFF" />
-              </svg>
-            </div>
-            <h3>Rastreamento & Web Analytics</h3>
-            <p>Implementação cirúrgica de Google Tag Manager, GA4 e API de Conversões do Meta. Diagnóstico completo de fugas no funil para saber o retorno real de cada real investido.</p>
+          <article class="cell cell--tracking reveal">
+            <svg class="cell__glyph" aria-hidden="true"><use href="#i-plugs-connected"/></svg>
+            <h3>Rastreamento e análise</h3>
+            <p>Instalação e auditoria para você saber quanto cada real investido devolve.</p>
+            <div class="tags"><span class="tag">GTM</span><span class="tag">GA4</span><span class="tag">Pixel</span><span class="tag">API de Conversões</span></div>
           </article>
 
-          <!-- Card 6: Automação no WhatsApp & CRM Oficial -->
-          <article class="service reveal-on-scroll">
-            <div class="service__icon">
-              <img src="imgs/whatsappLogo.svg" alt="WhatsApp Business">
-            </div>
-            <h3>Automação no WhatsApp & CRM</h3>
-            <p>Conexão dos anúncios diretamente ao WhatsApp com mensagens de abertura personalizadas e disparo automático para garantir atendimento veloz aos clientes em potencial.</p>
+          <article class="cell cell--wpp reveal" style="--i:1">
+            <svg class="cell__glyph" role="img" aria-label="WhatsApp" viewBox="0 0 24 24"><use href="#b-whatsapp"/></svg>
+            <h3>Automação no WhatsApp</h3>
+            <p>Mensagem de abertura personalizada e resposta automática para o lead não esfriar.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ==================== METODOLOGIA ==================== -->
-    <section class="section section-alt method" id="metodo">
-      <div class="container">
-        <div class="section-head reveal-on-scroll">
-          <span class="eyebrow">Metodologia Comprovada</span>
-          <h2>Um processo orientado a dados, sem chutes ou achismos</h2>
-          <p>O mesmo fluxo metódico de 4 fases que implemento para transformar verba publicitária em lucro líquido constante.</p>
+    <!-- ========== MÉTODO ========== -->
+    <section class="section section--tint" id="metodo">
+      <div class="wrap method">
+        <div>
+          <div class="head reveal">
+            <h2>Quatro etapas, da auditoria à escala.</h2>
+            <p>Nada de subir anúncio no escuro: primeiro eu diagnostico, depois configuro, testo e só então aumento a verba.</p>
+          </div>
+          <ol class="steps">
+            <li class="reveal">
+              <h3>Auditar</h3>
+              <p>Análise da conta, do produto, dos concorrentes e do site atual antes de gastar um centavo em anúncios.</p>
+            </li>
+            <li class="reveal">
+              <h3>Instalar o rastreamento</h3>
+              <p>Pixel, API de Conversões e GTM configurados, e definição do público com mais chance de comprar.</p>
+            </li>
+            <li class="reveal">
+              <h3>Testar criativos</h3>
+              <p>Orçamento controlado para descobrir qual mensagem gera o menor custo por lead qualificado.</p>
+            </li>
+            <li class="reveal">
+              <h3>Escalar com margem</h3>
+              <p>Mais verba nos conjuntos vencedores, mantendo o ROAS e a margem sob controle.</p>
+            </li>
+          </ol>
         </div>
 
-        <div class="method__steps reveal-on-scroll">
-          <div class="method__step">
-            <h3>01. Diagnóstico e Auditoria</h3>
-            <p>Análise aprofundada da conta, produto, concorrentes e do site atual antes de gastar um único centavo em anúncios.</p>
-          </div>
-          <div class="method__step">
-            <h3>02. Mapeamento & Setup Técnico</h3>
-            <p>Configuração blindada de pixel, CAPI e GTM, além da definição das personas de compra com maior probabilidade de conversão.</p>
-          </div>
-          <div class="method__step">
-            <h3>03. Validação Enxuta de Criativos</h3>
-            <p>Testes dinâmicos com orçamento controlado para validar quais mensagens e ângulos geram o menor custo por lead qualificado.</p>
-          </div>
-          <div class="method__step">
-            <h3>04. Escala Agressiva com Lucro</h3>
-            <p>Aumento consistente de investimento nos conjuntos vencedores, mantendo o ROAS estável e a margem operacional segura.</p>
-          </div>
-        </div>
-
-        <div class="section-head partnership-head reveal-on-scroll" style="margin-top: 4.8rem;">
-          <span class="eyebrow">Transparência Total</span>
-          <h2>Como funciona a parceria do primeiro ao último dia</h2>
-        </div>
-
-        <div class="partnership reveal-on-scroll">
-          <div class="partnership__card">
-            <h3>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="5" width="20" height="14" rx="2" />
-                <path d="M2 10h20" />
-              </svg>
-              Verba de mídia separada da gestão
-            </h3>
-            <p>O valor investido nos anúncios é pago diretamente às plataformas (Meta, Google ou TikTok) no seu próprio cartão ou boleto. Sem intermediários ou retenção do seu capital.</p>
-          </div>
-          <div class="partnership__card">
-            <h3>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 3v18h18M7 14l4-4 3 3 5-6" />
-              </svg>
-              Relatórios claros de faturamento
-            </h3>
-            <p>Receba dados semanais e mensais objetivos: custo por conversa no WhatsApp, taxa de conversão, ROAS e as melhorias aplicadas para a próxima semana.</p>
-          </div>
-          <div class="partnership__card">
-            <h3>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-              Comunicação direta sem intermediários
-            </h3>
-            <p>Fale comigo diretamente pelo WhatsApp. Sem filas de espera, chamados burocráticos ou estagiários: quem gerencia a sua estratégia é quem conversa com você.</p>
-          </div>
-          <div class="partnership__card">
-            <h3>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-              Otimizações de código contínuas
-            </h3>
-            <p>Se a sua página apresentar lentidão ou erro de tracking, eu mesmo realizo as correções necessárias no código, sem você precisar terceirizar programadores adicionais.</p>
-          </div>
-        </div>
-
+        <aside class="terms reveal" aria-labelledby="terms-title">
+          <h3 id="terms-title">Como funciona a parceria</h3>
+          <ul>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+              <strong>Verba direto nas plataformas</strong>
+              <p>Você paga Meta, Google ou TikTok no seu cartão ou boleto. Nada passa por mim.</p>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+              <strong>Relatórios semanais e mensais</strong>
+              <p>Custo por conversa, taxa de conversão, ROAS e o que muda na semana seguinte.</p>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+              <strong>Contato direto</strong>
+              <p>Você fala pelo WhatsApp com quem gerencia a sua conta, sem fila de chamados.</p>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+              <strong>Código incluso</strong>
+              <p>Se a página travar ou o rastreamento falhar, eu corrijo.</p>
+            </li>
+          </ul>
+        </aside>
       </div>
     </section>
 
-    <!-- ==================== CASE REAL (DUPLO SHOWCASE COM AS DUAS IMAGENS DO SITE) ==================== -->
+    <!-- ========== CASES ========== -->
     <section class="section" id="cases">
-      <div class="container">
-        <div class="section-head reveal-on-scroll">
-          <span class="eyebrow">História de Sucesso</span>
-          <h2>Resultados reais validados na prática</h2>
-          <p>Conheça o projeto do Ateliê Velha Manna, onde unimos engenharia web e tráfego pago para transformar a presença digital em uma máquina de vendas.</p>
+      <div class="wrap">
+        <div class="head reveal">
+          <h2>Um case: o Ateliê Velha Manna</h2>
+          <p>Site completo com catálogo e pedido por WhatsApp, mais a gestão dos anúncios no Instagram e no Facebook.</p>
         </div>
 
-        <div class="case reveal-on-scroll">
-          <!-- Duplo Mockup com as imagens adicionadas pelo usuário -->
-          <div class="case__showcase">
-            <!-- Mockup 1: Início -->
-            <div class="case__mockup-card">
-              <div class="case__mockup-header">
-                <div class="case__mockup-dots">
-                  <span class="case__mockup-dot"></span>
-                  <span class="case__mockup-dot"></span>
-                  <span class="case__mockup-dot"></span>
-                </div>
-                <span>velha-manna.vercel.app · Início</span>
-              </div>
-              <img src="imgs/siteVelhaMannaInicio.png" alt="Tela inicial do site Ateliê Velha Manna" loading="lazy">
-            </div>
-
-            <!-- Mockup 2: Catálogo Meninas -->
-            <div class="case__mockup-card">
-              <div class="case__mockup-header">
-                <div class="case__mockup-dots">
-                  <span class="case__mockup-dot"></span>
-                  <span class="case__mockup-dot"></span>
-                  <span class="case__mockup-dot"></span>
-                </div>
-                <span>velha-manna.vercel.app · Catálogo Interativo</span>
-              </div>
-              <img src="imgs/siteVelhaMannaMeninas.png" alt="Catálogo de produtos do Ateliê Velha Manna" loading="lazy">
-            </div>
+        <div class="case">
+          <div class="case__shots reveal">
+            <figure>
+              <img src="imgs/velha-manna-inicio.webp" alt="Página inicial do site do Ateliê Velha Manna, com o catálogo dividido em seis categorias" width="644" height="824" loading="lazy" decoding="async">
+              <figcaption>Página inicial</figcaption>
+            </figure>
+            <figure>
+              <img src="imgs/velha-manna-catalogo.webp" alt="Catálogo de produtos do site do Ateliê Velha Manna" width="880" height="912" loading="lazy" decoding="async">
+              <figcaption>Catálogo interativo</figcaption>
+            </figure>
           </div>
 
-          <div class="case__body">
-            <span class="case__tag">Case Real · Ateliê Velha Manna</span>
-            <h3>Site Próprio + Tráfego Pago Operando em Sincronia</h3>
-            <p>Desenvolvi o site completo do ateliê com arquitetura leve e moderna, integrando a vitrine diretamente com o catálogo de produtos e botão de pedido no WhatsApp comercial.</p>
-            <p>Em paralelo, estruturei a gestão dos anúncios no Meta Ads (Instagram e Facebook), utilizando a força dos vídeos artesanais para gerar desejo de compra nas futuras mães e familiares.</p>
-            <div class="case__personas">
-              <span class="chip">Mães em fase nesting</span>
+          <div class="case__body reveal">
+            <h3>Site e anúncios trabalhando juntos</h3>
+            <p>Desenvolvi o site completo do ateliê em código leve, com a vitrine ligada ao catálogo de produtos e o botão de pedido no WhatsApp.</p>
+            <p>Em paralelo, estruturei os anúncios no Meta Ads (Instagram e Facebook), usando os vídeos artesanais para despertar desejo em futuras mães e familiares.</p>
+            <!-- TODO (resultados): só publicar números que estejam no Gerenciador de Anúncios. Formato sugerido:
+                 "Período: MM/AAAA a MM/AAAA. Conversas iniciadas: X. Custo por conversa: R$ Y." -->
+            <div class="chips">
+              <span class="chip">Futuras mães</span>
               <span class="chip">Presentes afetivos</span>
-              <span class="chip">Entusiastas do handmade</span>
-              <span class="chip">ROAS Médio de 4,8x</span>
-              <span class="chip">+180% de conversas</span>
+              <span class="chip">Quem ama artesanato</span>
             </div>
-            <a href="https://velha-manna.vercel.app" class="case__link" target="_blank" rel="noopener noreferrer">
+            <a class="link" href="https://velhamanna.vercel.app" target="_blank" rel="noopener noreferrer">
               Acessar o site do projeto
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M7 17 17 7M8 7h9v9" />
-              </svg>
+              <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== FORMATOS DE TRABALHO / PLANOS ==================== -->
-    <section class="section section-alt" id="planos">
-      <div class="container">
-        <div class="section-head reveal-on-scroll">
-          <span class="eyebrow">Formatos de Trabalho</span>
-          <h2>Estruturas flexíveis de acordo com a fase do seu negócio</h2>
-          <p>Escolha o modelo que melhor atende o momento atual da sua empresa, desde a validação inicial até a escala acelerada.</p>
+    <!-- ========== MODELOS ========== -->
+    <section class="section section--tint" id="planos">
+      <div class="wrap">
+        <div class="head reveal">
+          <h2>Três modelos de trabalho</h2>
+          <p>Escolha pela fase do negócio, da validação inicial à escala.</p>
         </div>
 
         <div class="plans">
-          <!-- Modelo 1 -->
-          <div class="plan-card reveal-on-scroll">
-            <h3>Gestão de Tráfego Pago</h3>
-            <p>Para empresas que já possuem site ou vendem diretamente pelo WhatsApp e precisam de um fluxo ininterrupto de novos leads qualificados.</p>
-            <div class="plan-card__features">
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Gestão completa de Meta Ads e Google Ads
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Auditoria de públicos e palavras-chave
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Relatórios semanais de desempenho
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Ajustes e testes contínuos de criativos
-              </div>
-            </div>
-            <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--ghost" target="_blank" rel="noopener noreferrer" style="width:100%; justify-content:center;">
-              Consultar Formato
-            </a>
-          </div>
-
-          <!-- Modelo 2 -->
-          <div class="plan-card plan-card--featured reveal-on-scroll">
-            <span class="plan-card__badge">Mais Escolhido</span>
+          <article class="plan plan--main reveal">
+            <span class="plan__label">Mais completo</span>
             <h3>Combo Tráfego + Engenharia</h3>
-            <p>A solução completa de ponta a ponta: crio a sua página de alta conversão, configuro o tracking e gerencio o tráfego pago com foco em ROI.</p>
-            <div class="plan-card__features">
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Landing Page ultrarrápida sob medida
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Implementação de GTM Server-Side + Meta CAPI
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Campanhas completas no Meta, Google e TikTok
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Otimizações de velocidade e conversão contínuas
-              </div>
-            </div>
-            <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener noreferrer" style="width:100%; justify-content:center;">
-              Quero o Combo Completo
+            <p>Do início ao fim: eu crio a sua página, configuro o rastreamento e gerencio o tráfego pago com foco em retorno.</p>
+            <ul class="checks">
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Landing page rápida, feita sob medida</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>GTM Server-Side e Meta CAPI implementados</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Campanhas completas no Meta, Google e TikTok</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Otimização contínua de velocidade e conversão</li>
+            </ul>
+            <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="planos">
+              <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+              Pedir diagnóstico
             </a>
-          </div>
+          </article>
 
-          <!-- Modelo 3 -->
-          <div class="plan-card reveal-on-scroll">
-            <h3>Landing Page & Tracking</h3>
-            <p>Para quem já tem gestor interno ou agência, mas precisa resolver urgentemente a lentidão da página e o rastreamento quebrado de dados.</p>
-            <div class="plan-card__features">
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Desenvolvimento de página em código limpo
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Instalação profissional de GA4 e GTM
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Deduplicação de Pixel e API de Conversões
-              </div>
-              <div class="plan-card__item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                Garantia de carregamento abaixo de 2s
-              </div>
-            </div>
-            <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--ghost" target="_blank" rel="noopener noreferrer" style="width:100%; justify-content:center;">
-              Consultar Setup
-            </a>
+          <div class="plans__rest">
+            <article class="plan reveal" style="--i:1">
+              <h3>Gestão de Tráfego Pago</h3>
+              <p>Para quem já tem site ou vende direto pelo WhatsApp e precisa de um fluxo constante de leads qualificados.</p>
+              <ul class="checks">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Gestão de Meta Ads e Google Ads</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Auditoria de públicos e palavras-chave</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Relatórios semanais de desempenho</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Testes contínuos de criativos</li>
+              </ul>
+            </article>
+            <article class="plan reveal" style="--i:2">
+              <h3>Landing Page &amp; Tracking</h3>
+              <p>Para quem já tem gestor ou agência, mas precisa resolver a página lenta e o rastreamento quebrado.</p>
+              <ul class="checks">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Página em código limpo</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Instalação de GA4 e GTM</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Deduplicação de Pixel e API de Conversões</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Meta de carregamento abaixo de 2,5 s no celular (padrão "bom" do Google)</li>
+              </ul>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== FAQ COMPLETO ==================== -->
+    <!-- ========== FAQ ========== -->
     <section class="section" id="faq">
-      <div class="container">
-        <div class="section-head reveal-on-scroll">
-          <span class="eyebrow">Dúvidas Frequentes</span>
-          <h2>Perguntas frequentes antes de iniciar</h2>
+      <div class="wrap faq-grid">
+        <div class="head reveal">
+          <h2>Perguntas antes de começar</h2>
         </div>
-
-        <div class="faq reveal-on-scroll">
-          <details class="faq__item" open>
-            <summary>Quanto preciso investir em anúncios no início?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <div class="faq__answer">Dá para começar a validar com orçamentos enxutos (a partir de R$ 15 a R$ 25 por dia nas plataformas). O foco nas primeiras semanas é obter inteligência de dados, validar mensagens e encontrar o custo por lead ideal antes de acelerar a verba. Definimos esse valor estrategicamente no diagnóstico.</div>
+        <div class="faq reveal">
+          <details open>
+            <summary>Quanto preciso investir em anúncios no início?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <div class="answer">Dá para começar a validar com orçamentos enxutos, a partir de R$ 15 a R$ 25 por dia nas plataformas. Nas primeiras semanas o foco é coletar dados, validar mensagens e descobrir o custo por lead ideal antes de aumentar a verba. O valor é definido juntos no diagnóstico.</div>
           </details>
-
-          <details class="faq__item">
-            <summary>Por que ter um site rápido aumenta o lucro dos anúncios?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <div class="faq__answer">Quando alguém clica no seu anúncio, você paga por aquele clique independentemente da pessoa esperar ou não a página carregar. Se o site demorar 4 segundos, mais de 40% das pessoas fecham a aba antes de ver seu produto. Com uma página ultrarrápida, quase 100% dos cliques chegam à vitrine, dobrando as chances de fechamento.</div>
+          <details>
+            <summary>Por que um site rápido aumenta o lucro dos anúncios?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <div class="answer">Você paga pelo clique mesmo que a pessoa desista antes de a página abrir. Quanto mais a página demora no celular, mais gente vai embora sem ver a sua oferta. Uma página leve faz mais cliques virarem visitas de verdade, e isso reduz o custo por resultado.</div>
           </details>
-
-          <details class="faq__item">
-            <summary>O que é a API de Conversões (CAPI) e por que ela é indispensável?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <div class="faq__answer">Desde as atualizações do iOS da Apple e o uso de navegadores com bloqueadores, os pixels tradicionais perdem de 20% a 40% dos dados de quem compra. A API de Conversões envia os eventos de compra diretamente do servidor para o Meta e Google, garantindo que os algoritmos saibam exatamente quem é o seu comprador ideal para otimizar os custos.</div>
+          <details>
+            <summary>O que é a API de Conversões e por que ela importa?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <div class="answer">Bloqueadores de anúncio e as restrições de privacidade do iOS fazem o Pixel do navegador perder parte dos eventos de compra. A API de Conversões envia esses eventos direto do servidor para o Meta e o Google, o que ajuda o algoritmo a encontrar quem realmente compra e a baixar o custo.</div>
           </details>
-
-          <details class="faq__item">
-            <summary>Como é feito o pagamento da verba dos anúncios?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <div class="faq__answer">A verba de anúncios é paga diretamente por você às plataformas (Meta Ads, Google Ads ou TikTok Ads), utilizando o seu cartão ou boleto na sua conta própria. Dessa forma, você mantém todo o histórico, dados e controle financeiro. Meus honorários de gestão profissional são combinados à parte.</div>
+          <details>
+            <summary>Como é feito o pagamento da verba dos anúncios?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <div class="answer">A verba é paga por você diretamente às plataformas (Meta Ads, Google Ads ou TikTok Ads), com o seu cartão ou boleto, na sua conta própria. Assim você mantém o histórico, os dados e o controle financeiro. Meus honorários de gestão são combinados à parte.</div>
           </details>
-
-          <details class="faq__item">
-            <summary>Em quanto tempo é possível ver os primeiros resultados?
-              <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <div class="faq__answer">Normalmente, as primeiras mensagens no WhatsApp e orçamentos começam a cair já nas primeiras 48 a 72 horas após a aprovação dos anúncios. A estabilização de ROAS e a redução consistente do custo por aquisição amadurecem ao longo das primeiras 2 a 4 semanas de aprendizado do algoritmo.</div>
+          <details>
+            <summary>Em quanto tempo vejo os primeiros resultados?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <div class="answer">Normalmente as primeiras mensagens no WhatsApp começam a chegar de 48 a 72 horas depois da aprovação dos anúncios. A estabilização do ROAS e a queda do custo por aquisição levam de 2 a 4 semanas, período em que o algoritmo aprende.</div>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- ==================== CTA FINAL ==================== -->
-    <section class="section" id="agendar">
-      <div class="container">
-        <div class="final-cta reveal-on-scroll">
-          <span class="eyebrow" style="justify-content:center;">Diagnóstico Estratégico</span>
-          <h2>Vamos analisar o potencial do seu tráfego e do seu site?</h2>
-          <p>Sem compromisso: eu avalio a estrutura das suas campanhas e a velocidade da sua página, identificando exatamente onde você está perdendo vendas.</p>
-          <a href="https://wa.me/message/LMMBVSDOUZGTO1" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-            Agendar Diagnóstico
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+    <!-- ========== CTA FINAL ========== -->
+    <section class="section" id="agendar" style="padding-top:0">
+      <div class="wrap">
+        <div class="final reveal" data-watch>
+          <div>
+            <h2>Vamos ver onde sua verba está vazando?</h2>
+            <p>Sem compromisso. Eu olho suas campanhas e a velocidade da sua página e mostro onde você perde vendas.</p>
+          </div>
+          <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="final">
+            <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+            Pedir diagnóstico
           </a>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
   <footer class="footer">
-    <div class="container footer__inner">
-      <div class="logo">
-        <span class="logo__mark"><img src="imgs/logo.jpg" alt="Iago Carvalho" loading="lazy"></span>
-        <span>Iago Carvalho<span class="logo__sub">iagoderik.work@gmail.com</span></span>
+    <div class="wrap footer__in">
+      <div>
+        <img class="footer__logo" src="imgs/logo-full.webp" alt="Logotipo de Iago Derik, gestor de tráfego" width="720" height="617" loading="lazy" decoding="async">
+        <a class="footer__mail" href="mailto:iagoderik.work@gmail.com">iagoderik.work@gmail.com</a>
       </div>
-      <div class="footer__social">
-        <a href="https://github.com/Iago-Derik" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
-          </svg>
-        </a>
-        <a href="https://www.linkedin.com/in/iagoderik" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6.94 5a2 2 0 1 1-4-.01 2 2 0 0 1 4 .01ZM3.3 8.75h3.68V21H3.3V8.75Zm6.16 0h3.53v1.68h.05c.49-.93 1.7-1.91 3.5-1.91 3.74 0 4.43 2.46 4.43 5.66V21h-3.68v-5.99c0-1.43-.03-3.27-2-3.27-2 0-2.31 1.56-2.31 3.17V21H9.46V8.75Z" />
-          </svg>
-        </a>
-        <a href="https://www.instagram.com/iago_derik/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <img src="imgs/instagramLogo.svg" alt="Instagram" style="width:20px; height:20px; object-fit:contain;">
-        </a>
-        <a href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-          <img src="imgs/whatsappLogo.svg" alt="WhatsApp" style="width:20px; height:20px; object-fit:contain;">
-        </a>
+      <div class="social">
+        <a href="https://github.com/Iago-Derik" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="ico" aria-hidden="true"><use href="#i-github-logo"/></svg></a>
+        <a href="https://www.linkedin.com/in/iagoderik" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="ico" aria-hidden="true"><use href="#i-linkedin-logo"/></svg></a>
+        <a href="https://www.instagram.com/iago_derik/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram-logo"/></svg></a>
+        <a href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-cta="footer"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg></a>
       </div>
-      <small>&copy; <span id="anoAtual"></span> Iago Carvalho. Tráfego Pago & Engenharia de Conversão Web/Mobile.</small>
+      <small>&copy; <span id="ano">2026</span> Iago Carvalho. Tráfego Pago &amp; Engenharia de Conversão Web/Mobile.</small>
     </div>
   </footer>
 
-  <!-- ==================== SCRIPTS ==================== -->
+  <div class="sticky" id="sticky">
+    <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="sticky">
+      <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+      Pedir diagnóstico
+    </a>
+  </div>
+
   <script>
     (function () {
-      // 1. Header scroll effect
-      var header = document.getElementById('header');
-      var ticking = false;
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          window.requestAnimationFrame(function () {
-            header.classList.toggle('is-scrolled', window.scrollY > 10);
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
+      var root = document.documentElement;
+      var $ = function (s, c) { return (c || document).querySelector(s); };
+      var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+      var hasIO = 'IntersectionObserver' in window;
 
-      // 2. Mobile Nav Toggle
-      var hamburger = document.getElementById('hamburger');
-      var mobileNav = document.getElementById('mobileNav');
-      hamburger.addEventListener('click', function () {
-        var open = hamburger.getAttribute('aria-expanded') === 'true';
-        hamburger.setAttribute('aria-expanded', String(!open));
-        mobileNav.classList.toggle('is-open', !open);
-      });
-      mobileNav.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          hamburger.setAttribute('aria-expanded', 'false');
-          mobileNav.classList.remove('is-open');
-        });
+      /* 1. Tema: alterna e guarda a escolha */
+      var themeBtn = $('#theme');
+      themeBtn.addEventListener('click', function () {
+        var attr = root.getAttribute('data-theme');
+        var isDark = attr ? attr === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var next = isDark ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { /* sem storage: vale só nesta visita */ }
       });
 
-      // 3. Nav Scrollspy Ativo — via IntersectionObserver (evita reflow forçado
-      // de ler getBoundingClientRect em todo scroll, que o PageSpeed acusa)
-      var links = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
-      var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); }).filter(Boolean);
-      var pendingHref = null;
-      var setActiveByHref = function (href) {
-        links.forEach(function (l) {
-          l.classList.toggle('is-active', l.getAttribute('href') === href);
-        });
+      /* 2. Menu mobile */
+      var burger = $('#burger'), menu = $('#menu');
+      var setMenu = function (open) {
+        burger.setAttribute('aria-expanded', String(open));
+        burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        menu.classList.toggle('is-open', open);
       };
-      if (sections.length) {
-        var visibleSections = new Set();
-        var spyObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) visibleSections.add(entry.target.id);
-            else visibleSections.delete(entry.target.id);
-          });
-          if (pendingHref) {
-            var pendingId = pendingHref.slice(1);
-            if (visibleSections.has(pendingId)) pendingHref = null;
-            else return;
-          }
-          // Escolhe a seção visível que aparece primeiro no documento
-          for (var i = 0; i < sections.length; i++) {
-            if (visibleSections.has(sections[i].id)) {
-              setActiveByHref('#' + sections[i].id);
-              break;
-            }
-          }
-        }, { rootMargin: '-140px 0px -60% 0px', threshold: 0 });
-        sections.forEach(function (section) { spyObserver.observe(section); });
+      burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+      $$('a', menu).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+      /* 3. Header ganha borda depois que sai do topo (sem listener de scroll) */
+      var header = $('#header');
+      if (hasIO) {
+        new IntersectionObserver(function (en) {
+          header.classList.toggle('is-scrolled', !en[0].isIntersecting);
+        }).observe($('#sentinel'));
       }
-      links.forEach(function (link) {
-        link.addEventListener('click', function () {
-          pendingHref = link.getAttribute('href');
-          setActiveByHref(pendingHref);
-        });
-      });
 
-      // 4. Scroll Reveal via IntersectionObserver com fallback automático
-      var revealElements = document.querySelectorAll('.reveal-on-scroll');
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
+      /* 4. Scrollspy do menu */
+      var links = $$('#navList a');
+      var secs = links.map(function (l) { return $(l.getAttribute('href')); }).filter(Boolean);
+      if (hasIO && secs.length) {
+        var seen = new Set();
+        var spy = new IntersectionObserver(function (en) {
+          en.forEach(function (e) { e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id); });
+          var active = secs.filter(function (s) { return seen.has(s.id); })[0];
+          links.forEach(function (l) {
+            if (active && l.getAttribute('href') === '#' + active.id) l.setAttribute('aria-current', 'true');
+            else l.removeAttribute('aria-current');
           });
-        }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+        }, { rootMargin: '-120px 0px -55% 0px', threshold: 0 });
+        secs.forEach(function (s) { spy.observe(s); });
+      }
 
-        revealElements.forEach(function (el) {
-          observer.observe(el);
-        });
-
-        // Garantia de segurança para nunca ocultar elementos
-        setTimeout(function () {
-          revealElements.forEach(function (el) {
-            el.classList.add('is-visible');
-          });
-        }, 1200);
+      /* 5. Revelar ao rolar (sequência de leitura) */
+      var reveals = $$('.reveal');
+      if (hasIO) {
+        var ro = new IntersectionObserver(function (en) {
+          en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { ro.observe(el); });
       } else {
-        revealElements.forEach(function (el) {
-          el.classList.add('is-visible');
-        });
+        reveals.forEach(function (el) { el.classList.add('is-in'); });
       }
 
-      // 5. Animação de Contador de Métricas no Painel
-      var animateCounter = function (el, target, prefix, suffix, decimal) {
-        var current = 0;
-        var duration = 1500;
-        var stepTime = 20;
-        var steps = duration / stepTime;
-        var increment = target / steps;
-        var timer = setInterval(function () {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          var formatted = decimal ? current.toFixed(2).replace('.', decimal) : (Number.isInteger(target) ? Math.round(current) : current.toFixed(1).replace('.', ','));
-          el.textContent = (prefix || '') + formatted + (suffix || '');
-        }, stepTime);
-      };
+      /* 6. CTA fixo no celular: aparece quando nenhum CTA principal está na tela */
+      var sticky = $('#sticky'), watched = $$('[data-watch]');
+      if (hasIO && sticky && watched.length) {
+        var on = new Set();
+        var so = new IntersectionObserver(function (en) {
+          en.forEach(function (e) { e.isIntersecting ? on.add(e.target) : on.delete(e.target); });
+          sticky.classList.toggle('is-on', on.size === 0 && window.scrollY > 200);
+        });
+        watched.forEach(function (el) { so.observe(el); });
+      }
 
-      var metrics = document.querySelectorAll('.metric__value[data-counter]');
-      metrics.forEach(function (metric) {
-        var val = parseFloat(metric.getAttribute('data-counter'));
-        var prefix = metric.getAttribute('data-prefix') || '';
-        var suffix = metric.getAttribute('data-suffix') || '';
-        var decimal = metric.getAttribute('data-decimal') || null;
-        if (!isNaN(val)) {
-          animateCounter(metric, val, prefix, suffix, decimal);
-        }
+      /* 7. Medição do próprio site: evento no dataLayer a cada clique de CTA.
+            Para usar: criar no GTM um gatilho "Evento personalizado" = cta_whatsapp_click. */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('[data-cta]') : null;
+        if (!a) return;
+        window.dataLayer.push({ event: 'cta_whatsapp_click', cta_location: a.getAttribute('data-cta') });
       });
 
-      // 6. Marquee JS Driver garantido (caso CSS animation seja pausada pelo browser)
-      var tickerWrapper = document.getElementById('tickerWrapper');
-      var tickerContent = document.getElementById('tickerContent');
-      if (tickerWrapper && tickerContent) {
-        var isHovered = false;
-        tickerWrapper.addEventListener('mouseenter', function () { isHovered = true; });
-        tickerWrapper.addEventListener('mouseleave', function () { isHovered = false; });
-        tickerWrapper.addEventListener('touchstart', function () { isHovered = true; }, { passive: true });
-        tickerWrapper.addEventListener('touchend', function () { isHovered = false; }, { passive: true });
+      /* 8. Ano do rodapé */
+      $('#ano').textContent = new Date().getFullYear();
 
-        // Verificação: se a animação CSS estiver inativa por qualquer motivo, o JS assume o scroll suave
-        var style = window.getComputedStyle(tickerContent);
-        if (style.animationPlayState === 'paused' || style.animationName === 'none') {
-          var posX = 0;
-          var speed = 0.8;
-          var halfWidth = tickerContent.scrollWidth / 2;
-          function loopTicker() {
-            if (!isHovered && halfWidth > 0) {
-              posX -= speed;
-              if (Math.abs(posX) >= halfWidth) {
-                posX = 0;
-              }
-              tickerContent.style.transform = 'translate3d(' + posX + 'px, 0, 0)';
-            }
-            requestAnimationFrame(loopTicker);
-          }
-          requestAnimationFrame(loopTicker);
-        }
-      }
-
-      // 7. Atualização dinâmica do ano no rodapé
-      document.getElementById('anoAtual').textContent = new Date().getFullYear();
-
-      // 8. Carregamento adiado do Google Tag Manager
-      // O GTM injeta GA4, Meta Pixel/CAPI e outros scripts pesados (~700 KiB somados).
-      // Adiar o carregamento até a primeira interação (ou um timeout de segurança)
-      // tira esse JavaScript do caminho crítico de renderização e reduz LCP/TBT,
-      // sem perder nenhum evento — os cliques que importam (WhatsApp) só acontecem
-      // depois que a pessoa já interagiu com a página de qualquer forma.
+      /* 9. Google Tag Manager com carregamento adiado (mesmo contêiner e mesma lógica de antes):
+            sai do caminho crítico e carrega na primeira interação ou após 3,5 s. */
       var gtmLoaded = false;
+      var events = ['scroll', 'mousemove', 'keydown', 'touchstart', 'click'];
       var loadGTM = function () {
         if (gtmLoaded) return;
         gtmLoaded = true;
         (function (w, d, s, l, i) {
-          w[l] = w[l] || []; w[l].push({
-            'gtm.start': new Date().getTime(), event: 'gtm.js'
-          }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+          w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-W2NKZJBX');
-        ['scroll', 'mousemove', 'keydown', 'touchstart', 'click'].forEach(function (evt) {
-          window.removeEventListener(evt, loadGTM, { passive: true });
-        });
+        events.forEach(function (evt) { window.removeEventListener(evt, loadGTM); });
         clearTimeout(gtmFallback);
       };
       var gtmFallback = setTimeout(loadGTM, 3500);
-      ['scroll', 'mousemove', 'keydown', 'touchstart', 'click'].forEach(function (evt) {
-        window.addEventListener(evt, loadGTM, { passive: true, once: true });
-      });
+      events.forEach(function (evt) { window.addEventListener(evt, loadGTM, { passive: true, once: true }); });
     })();
   </script>
 </body>
-
 </html>
