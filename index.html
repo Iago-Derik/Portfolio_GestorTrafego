@@ -3,19 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Iago Carvalho | Tráfego Pago Estratégico &amp; Engenharia de Conversão</title>
-  <meta name="description" content="Gestão de tráfego pago (Meta Ads, Google Ads e TikTok Ads) por quem também é desenvolvedor web: rastreamento correto, site rápido e diagnóstico em 48h.">
+  <title>Deriks Work | Tráfego Pago &amp; Engenharia Web, por Iago Derik</title>
+  <meta name="description" content="Gestão de tráfego pago (Meta Ads e Google Ads), landing pages e rastreamento num só lugar. Eu construo o caminho entre o clique e a venda. Diagnóstico em até 48h.">
+  <link rel="canonical" href="https://derikswork.cloud/">
   <meta name="theme-color" content="#f3f5f7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="Iago Carvalho | Gestor de tráfego pago e desenvolvedor web">
-  <meta property="og:description" content="Em 48h eu mostro onde sua verba está vazando: nos anúncios, no rastreamento ou na página lenta.">
-  <!-- TODO: quando o domínio final estiver definido, adicionar og:image (URL absoluta, 1200x630) para a prévia de link no WhatsApp e no Instagram. -->
+  <meta property="og:site_name" content="Deriks Work">
+  <meta property="og:url" content="https://derikswork.cloud/">
+  <meta property="og:title" content="Deriks Work | Pare de pagar por clique sem venda">
+  <meta property="og:description" content="Tráfego pago, página e rastreamento conectados por uma só pessoa. Diagnóstico em até 48h.">
+  <meta property="og:image" content="https://derikswork.cloud/imgs/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Deriks Work: Pare de pagar por clique sem venda. Tráfego Pago e Engenharia Web.">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32.png">
   <link rel="apple-touch-icon" href="imgs/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="imgs/iago-720.webp" imagesrcset="imgs/iago-480.webp 480w, imgs/iago-720.webp 720w, imgs/iago-960.webp 960w" imagesizes="(min-width: 900px) 470px, 90vw" fetchpriority="high">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Deriks Work",
+    "url": "https://derikswork.cloud/",
+    "image": "https://derikswork.cloud/imgs/og-cover.jpg",
+    "description": "Gestão de tráfego pago, landing pages e rastreamento de conversões.",
+    "email": "iagoderik.work@gmail.com",
+    "areaServed": "BR",
+    "founder": { "@type": "Person", "name": "Iago Derik" },
+    "sameAs": [
+      "https://www.instagram.com/iago_derik/",
+      "https://www.linkedin.com/in/iagoderik",
+      "https://github.com/Iago-Derik"
+    ]
+  }
+  </script>
 
   <script>
     /* dataLayer precisa existir antes de qualquer evento; o GTM é carregado depois (ver fim do body). */
@@ -167,7 +194,7 @@
     .skip:focus { top: 12px; }
 
     /* ============================================================
-       BOTÕES (um rótulo por intenção: "Pedir diagnóstico")
+       BOTÕES (um rótulo por intenção: "Quero um diagnóstico")
        ============================================================ */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: .6em;
@@ -328,47 +355,76 @@
     .rows p { max-width: 58ch; color: var(--text-2); font-size: 1.075rem; }
     @media (min-width: 820px) { .rows > li { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; } }
 
-    /* Serviços: bento */
+    /* Como funciona: fluxo do clique à venda */
+    .eyebrow--sec { margin-bottom: 14px; }
+    .head--wide { max-width: none; }
+    .head--wide h2 { max-width: 24ch; }
+    .flow { display: grid; }
+    .flow li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 2px 18px; padding-bottom: 30px; }
+    .flow li:last-child { padding-bottom: 0; }
+    .flow__ico {
+      grid-row: span 2; display: grid; place-items: center; width: 48px; height: 48px;
+      border-radius: var(--r-sm); background: var(--surface); border: 1px solid var(--line-strong); color: var(--accent-text);
+    }
+    .flow__ico .ico { width: 24px; height: 24px; }
+    .flow li:not(:last-child)::before {
+      content: ""; position: absolute; left: 24px; top: 56px; bottom: 8px; width: 1px; background: var(--accent-line);
+    }
+    .flow li:last-child .flow__ico { background: var(--accent); border-color: transparent; color: var(--on-accent); }
+    .flow h3 { align-self: end; font-size: 1.2rem; letter-spacing: -.02em; }
+    .flow p { color: var(--text-2); font-size: .98rem; max-width: 40ch; }
+    .flow__note {
+      display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 14px; margin-top: clamp(40px, 6vw, 64px);
+      padding-top: 28px; border-top: 1px solid var(--line-strong); max-width: 70ch; font-size: 1.08rem;
+    }
+    .flow__note .ico { margin-top: 3px; color: var(--accent-text); }
+    @media (min-width: 960px) {
+      .flow { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+      .flow li { grid-template-columns: 1fr; gap: 8px; padding-bottom: 0; }
+      .flow__ico { grid-row: auto; margin-bottom: 12px; }
+      .flow li:not(:last-child)::before { left: 64px; right: -12px; top: 24px; bottom: auto; width: auto; height: 1px; }
+    }
+
+    /* Diagnóstico: bento com fundos diferentes */
     .bento { display: grid; gap: 16px; grid-template-columns: 1fr; }
     .cell {
       position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 12px;
-      min-height: 260px; padding: 28px;
+      min-height: 240px; padding: 28px;
       background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
       transition: border-color .25s, transform .4s var(--ease);
     }
     @media (hover: hover) { .cell:hover { border-color: var(--line-strong); transform: translateY(-3px); } }
-    .cell__glyph { width: 34px; height: 34px; color: var(--text); flex: none; }
+    .cell__glyph { width: 34px; height: 34px; color: var(--accent-text); flex: none; }
     .cell h3 { margin-top: auto; font-size: 1.5rem; letter-spacing: -.02em; }
-    .cell p { max-width: 40ch; color: var(--text-2); }
-    .cell--meta { background: var(--accent-tint); border-color: var(--accent-line); }
-    .cell--meta .cell__glyph { color: #1877F2; }
-    .cell--wpp { background: var(--deep); border-color: transparent; }
-    .cell--wpp .cell__glyph { color: #25D366; }
-    .cell--wpp h3 { color: var(--on-deep); }
-    .cell--wpp p { color: var(--on-deep-2); }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-    .tag { padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: var(--r-pill); font: 500 .8rem var(--mono); color: var(--text-2); }
-    .cell__shot { margin: 12px -28px -28px; height: 190px; overflow: hidden; border-top: 1px solid var(--line); }
-    .cell__shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .cell p { max-width: 46ch; color: var(--text-2); }
+    .cell--deep { background: var(--deep); border-color: transparent; }
+    .cell--deep .cell__glyph, .cell--deep h3 { color: var(--on-deep); }
+    .cell--deep p { color: var(--on-deep-2); }
+    .cell--tint { background: var(--accent-tint); border-color: var(--accent-line); }
     @media (min-width: 768px) {
-      .bento { grid-template-columns: repeat(12, 1fr); }
-      .cell--meta { grid-column: span 7; }
-      .cell--google { grid-column: span 5; }
-      .cell--tiktok { grid-column: span 5; }
-      .cell--landing { grid-column: span 7; }
-      .cell--tracking { grid-column: span 7; }
-      .cell--wpp { grid-column: span 5; }
-      .cell--landing .cell__text { max-width: 50%; display: flex; flex-direction: column; gap: 12px; height: 100%; }
-      .cell__shot {
-        position: absolute; right: 28px; bottom: 0; width: min(42%, 290px); height: 84%; margin: 0;
-        border: 1px solid var(--line); border-bottom: 0; border-radius: 16px 16px 0 0;
-      }
+      .bento { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .cell--a, .cell--d { grid-column: span 7; }
+      .cell--b, .cell--c { grid-column: span 5; }
     }
-    @media (min-width: 1100px) {
-      .cell--tiktok { grid-column: span 4; }
-      .cell--landing { grid-column: span 8; }
-      .cell--tracking { grid-column: span 8; }
-      .cell--wpp { grid-column: span 4; }
+
+    /* Sobre: fatos lado a lado, sem cartões */
+    .facts { display: grid; gap: 28px; }
+    .facts li { padding-top: 22px; border-top: 2px solid var(--accent); }
+    .facts strong { display: block; font-size: 1.25rem; font-weight: 650; letter-spacing: -.02em; }
+    .facts p { margin-top: 10px; color: var(--text-2); max-width: 36ch; }
+    @media (min-width: 900px) { .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 4vw, 56px); } }
+
+    /* Para quem é */
+    .fit { display: grid; gap: 40px; }
+    .fit .head + * { margin-top: 0; }
+    .fit ul li {
+      display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 16px; padding: 22px 0;
+      border-top: 1px solid var(--line-strong); font-size: clamp(1.08rem, 1rem + .4vw, 1.3rem); font-weight: 500; letter-spacing: -.01em;
+    }
+    .fit ul .ico { width: 24px; height: 24px; margin-top: 3px; color: var(--accent-text); }
+    @media (min-width: 960px) {
+      .fit { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(48px, 7vw, 96px); align-items: start; }
+      .fit .head { position: sticky; top: calc(var(--header-h) + 32px); }
     }
 
     /* Método: passos + regras da parceria */
@@ -390,30 +446,12 @@
       .terms { position: sticky; top: calc(var(--header-h) + 24px); }
     }
 
-    /* Cases */
-    .case { display: grid; gap: 40px; align-items: center; }
-    .case__shots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
-    .case__shots figure { margin: 0; }
-    .case__shots figure:nth-child(2) { margin-top: 44px; }
-    .case__shots img { width: 100%; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--surface); }
-    .case__shots figcaption { margin-top: 10px; font-size: .88rem; color: var(--text-3); }
-    .case__body h3 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); }
-    .case__body p { margin-top: 16px; color: var(--text-2); font-size: 1.05rem; max-width: 52ch; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .chip { padding: 7px 14px; border: 1px solid var(--line-strong); border-radius: var(--r-pill); font-size: .88rem; color: var(--text-2); }
     .link {
       display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
       font-weight: 600; color: var(--accent-text); text-decoration: none;
       border-bottom: 1px solid var(--accent-line); padding-bottom: 3px; transition: border-color .2s;
     }
     .link:hover { border-bottom-color: var(--accent-text); }
-    @media (max-width: 559px) {
-      .case__shots { display: flex; gap: 14px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-      .case__shots::-webkit-scrollbar { display: none; }
-      .case__shots figure { flex: 0 0 78%; scroll-snap-align: start; }
-      .case__shots figure:nth-child(2) { margin-top: 0; }
-    }
-    @media (min-width: 960px) { .case { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(48px, 7vw, 96px); } }
 
     /* Modelos */
     .plans { display: grid; gap: 20px; }
@@ -551,27 +589,30 @@
 <symbol id="b-googleanalytics" viewBox="0 0 24 24" fill="currentColor"><path d="M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"/></symbol>
 <symbol id="b-tiktok" viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.9,.9)" d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/><path fill="#FE2C55" transform="translate(.9,-.9)" d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/><path fill="currentColor" d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></symbol>
 <symbol id="b-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+<symbol id="i-megaphone" viewBox="0 0 256 256" fill="currentColor"><path d="M248,120a48.05,48.05,0,0,0-48-48H160.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,32,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,159.12,214l11,7.33A16,16,0,0,0,194.5,212l11.77-44.36A48.07,48.07,0,0,0,248,120ZM48,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C134.65,155,90.84,164.07,48,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM200,152H168V88h32a32,32,0,1,1,0,64Z"/></symbol>
+<symbol id="i-currency-circle-dollar" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-68a28,28,0,0,1-28,28h-4v8a8,8,0,0,1-16,0v-8H104a8,8,0,0,1,0-16h36a12,12,0,0,0,0-24H116a28,28,0,0,1,0-56h4V72a8,8,0,0,1,16,0v8h16a8,8,0,0,1,0,16H116a12,12,0,0,0,0,24h24A28,28,0,0,1,168,148Z"/></symbol>
+<symbol id="i-code" viewBox="0 0 256 256" fill="currentColor"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></symbol>
 </svg>
   <a class="skip" href="#conteudo">Ir para o conteúdo</a>
   <div class="sentinel" id="sentinel" aria-hidden="true"></div>
 
   <header class="header" id="header">
     <div class="wrap header__in">
-      <a class="brand" href="#topo" aria-label="Iago Carvalho, ir para o topo">
+      <a class="brand" href="#topo" aria-label="Deriks Work, ir para o topo">
         <span class="brand__tile"><img src="imgs/logo-mark.webp" alt="" width="96" height="96"></span>
         <span class="brand__txt">
-          <span class="brand__name">Iago Carvalho</span>
-          <span class="brand__sub">Tráfego &amp; Engenharia Web</span>
+          <span class="brand__name">Deriks Work</span>
+          <span class="brand__sub">Tráfego Pago &amp; Engenharia Web</span>
         </span>
       </a>
 
       <nav class="nav" aria-label="Navegação principal">
         <ul id="navList">
-          <li><a href="#diferencial">Diferenciais</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
           <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#metodo">Metodologia</a></li>
-          <li><a href="#cases">Cases</a></li>
-          <li><a href="#planos">Modelos</a></li>
+          <li><a href="#diagnostico">Diagnóstico</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#metodo">Método</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </nav>
@@ -583,7 +624,7 @@
         </button>
         <a class="btn btn--primary btn--sm header__cta" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="header">
           <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
-          Pedir diagnóstico
+          Quero um diagnóstico
         </a>
         <button class="icon-btn burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
           <svg class="ico i-list" aria-hidden="true"><use href="#i-list"/></svg>
@@ -595,35 +636,35 @@
 
   <nav class="menu" id="menu" aria-label="Navegação mobile">
     <ul>
-      <li><a href="#diferencial">Diferenciais</a></li>
+      <li><a href="#como-funciona">Como funciona</a></li>
       <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#metodo">Metodologia</a></li>
-      <li><a href="#cases">Cases</a></li>
-      <li><a href="#planos">Modelos</a></li>
+      <li><a href="#diagnostico">Diagnóstico</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#metodo">Método</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="menu">
       <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
-      Pedir diagnóstico
+      Quero um diagnóstico
     </a>
   </nav>
 
   <main id="conteudo">
     <div id="topo"></div>
 
-    <!-- ========== HERO ========== -->
+    <!-- ========== 1. HERO: problema + proposta + CTA ========== -->
     <section class="hero">
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <span class="eyebrow enter" style="--i:0">Gestor de tráfego pago e desenvolvedor web</span>
+          <span class="eyebrow enter" style="--i:0">Gestor de tráfego e desenvolvedor web</span>
           <h1>Pare de pagar por clique sem venda.</h1>
-          <p class="hero__sub enter" style="--i:2">Em 48 horas eu mostro onde sua verba está vazando: nos anúncios, no rastreamento ou na página lenta.</p>
+          <p class="hero__sub enter" style="--i:2">Eu conecto anúncio, página, rastreamento e WhatsApp para você saber de onde vem cada venda.</p>
           <div class="hero__actions enter" style="--i:3" data-watch>
             <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="hero">
               <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
-              Pedir diagnóstico
+              Quero um diagnóstico
             </a>
-            <a class="btn btn--ghost" href="#cases">Ver o case <svg class="ico arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="btn btn--ghost" href="#como-funciona">Como funciona <svg class="ico arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
 
@@ -632,8 +673,8 @@
             <img src="imgs/iago-720.webp"
                  srcset="imgs/iago-480.webp 480w, imgs/iago-720.webp 720w, imgs/iago-960.webp 960w"
                  sizes="(min-width: 900px) 470px, 90vw"
-                 width="720" height="900" decoding="async"
-                 alt="Iago Carvalho, de blazer azul-marinho e braços cruzados, em um escritório">
+                 width="720" height="900" decoding="async" fetchpriority="high"
+                 alt="Iago Derik, fundador da Deriks Work, de blazer azul-marinho e braços cruzados em um escritório">
           </div></div>
           <figcaption class="hero__cap">Você fala direto comigo, sem atendente no meio.</figcaption>
         </figure>
@@ -655,12 +696,12 @@
       </div>
     </section>
 
-    <!-- ========== DIFERENCIAL ========== -->
+    <!-- ========== 2. POR QUE A DERIKS WORK: gestor + desenvolvedor ========== -->
     <section class="section" id="diferencial">
       <div class="wrap">
         <div class="head reveal">
-          <h2>O anúncio é só metade do problema.</h2>
-          <p>Muita verba se perde na página lenta, no evento que não dispara e no atendimento demorado. Como também programo, eu resolvo tudo isso sem terceirizar.</p>
+          <h2>Gestor de tráfego que também programa.</h2>
+          <p>Muita verba se perde na página lenta, no evento que não dispara e no atendimento demorado. Como eu também desenvolvo, resolvo tudo isso sem terceirizar.</p>
         </div>
         <ul class="rows">
           <li class="reveal">
@@ -679,81 +720,198 @@
       </div>
     </section>
 
-    <!-- ========== SERVIÇOS ========== -->
-    <section class="section" id="servicos" style="padding-top:0">
+    <!-- ========== 3. COMO FUNCIONA: anúncio > página > tracking > WhatsApp > venda ========== -->
+    <section class="section section--tint" id="como-funciona">
+      <div class="wrap">
+        <div class="head head--wide reveal">
+          <span class="eyebrow eyebrow--sec">Tráfego + Engenharia</span>
+          <h2>Eu não gerencio apenas anúncios. Construo o caminho entre o clique e a venda.</h2>
+        </div>
+        <ol class="flow">
+          <li class="reveal">
+            <span class="flow__ico"><svg class="ico" aria-hidden="true"><use href="#i-megaphone"/></svg></span>
+            <h3>Anúncio</h3>
+            <p>Campanha no Meta ou no Google falando com quem tem chance real de comprar.</p>
+          </li>
+          <li class="reveal" style="--i:1">
+            <span class="flow__ico"><svg class="ico" aria-hidden="true"><use href="#i-browser"/></svg></span>
+            <h3>Página</h3>
+            <p>Leve no celular e montada para uma única ação: chamar no WhatsApp ou comprar.</p>
+          </li>
+          <li class="reveal" style="--i:2">
+            <span class="flow__ico"><svg class="ico" aria-hidden="true"><use href="#i-plugs-connected"/></svg></span>
+            <h3>Rastreamento</h3>
+            <p>Pixel, API de Conversões e GTM registram cada passo do visitante.</p>
+          </li>
+          <li class="reveal" style="--i:3">
+            <span class="flow__ico"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg></span>
+            <h3>WhatsApp</h3>
+            <p>O lead chega na conversa com contexto, e a mensagem de abertura já está pronta.</p>
+          </li>
+          <li class="reveal" style="--i:4">
+            <span class="flow__ico"><svg class="ico" aria-hidden="true"><use href="#i-currency-circle-dollar"/></svg></span>
+            <h3>Venda</h3>
+            <p>Você vê qual anúncio trouxe cada venda e onde vale colocar mais verba.</p>
+          </li>
+        </ol>
+        <p class="flow__note reveal">
+          <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+          <span>Você não precisa coordenar gestor de tráfego, desenvolvedor e configuração de rastreamento separadamente. Uma pessoa responde pelo caminho inteiro.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== 4. SERVIÇOS: três ofertas ========== -->
+    <section class="section" id="servicos">
+      <span id="planos" aria-hidden="true"></span>
       <div class="wrap">
         <div class="head reveal">
-          <h2>O que eu monto e gerencio para você</h2>
-          <p>Cada serviço cobre uma etapa do caminho entre o anúncio e a venda.</p>
+          <h2>Três formas de trabalhar juntos</h2>
+          <p>Escolha pelo que falta hoje no seu negócio: tráfego, página ou os dois conectados.</p>
+        </div>
+
+        <div class="plans">
+          <article class="plan plan--main reveal">
+            <span class="plan__label">Solução completa</span>
+            <h3>Tráfego + Engenharia</h3>
+            <p>Aquisição, página e rastreamento num só projeto. Eu crio a página, configuro o tracking e gerencio as campanhas com foco em retorno.</p>
+            <ul class="checks">
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Landing page rápida, feita sob medida</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>GTM Server-Side e API de Conversões do Meta</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Campanhas no Meta Ads e no Google Ads</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Otimização contínua de velocidade e conversão</li>
+            </ul>
+            <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="planos">
+              <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+              Quero um diagnóstico
+            </a>
+          </article>
+
+          <div class="plans__rest">
+            <article class="plan reveal" style="--i:1">
+              <h3>Gestão de Tráfego Pago</h3>
+              <p>Para quem já tem site ou vende pelo WhatsApp e precisa de um fluxo constante de leads qualificados.</p>
+              <ul class="checks">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Meta Ads e Google Ads</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Testes contínuos de criativos e públicos</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Relatórios semanais de desempenho</li>
+              </ul>
+            </article>
+            <article class="plan reveal" style="--i:2">
+              <h3>Landing Pages &amp; Conversão</h3>
+              <p>Para quem já tem gestor ou agência, mas precisa resolver a página lenta e o rastreamento quebrado.</p>
+              <ul class="checks">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Página em código, com estrutura pensada para converter</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>GA4, GTM, Pixel e API de Conversões deduplicados</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Meta de carregamento abaixo de 2,5 s no celular</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 5. DIAGNÓSTICO: o que o cliente recebe ========== -->
+    <section class="section section--tint" id="diagnostico">
+      <div class="wrap">
+        <div class="head reveal">
+          <h2>O que você recebe no diagnóstico</h2>
+          <p>Uma análise dos pontos onde a verba costuma vazar, com as correções em ordem de prioridade.</p>
         </div>
         <div class="bento">
-          <article class="cell cell--meta reveal">
-            <svg class="cell__glyph" role="img" aria-label="Meta" viewBox="0 0 24 24"><use href="#b-meta"/></svg>
-            <h3>Meta Ads</h3>
-            <p>Instagram e Facebook. Campanhas para mensagem no WhatsApp, catálogo e remarketing de quem quase comprou.</p>
+          <article class="cell cell--deep cell--a reveal">
+            <svg class="cell__glyph" aria-hidden="true"><use href="#i-megaphone"/></svg>
+            <h3>Conta de anúncios</h3>
+            <p>Estrutura das campanhas, públicos, criativos e para onde a verba está indo de verdade.</p>
           </article>
-
-          <article class="cell cell--google reveal" style="--i:1">
-            <svg class="cell__glyph" role="img" aria-label="Google Ads" viewBox="0 0 256 230"><use href="#b-googleads"/></svg>
-            <h3>Google Ads</h3>
-            <p>Pesquisa, Performance Max e Shopping para aparecer na hora em que o cliente já está procurando.</p>
+          <article class="cell cell--b reveal" style="--i:1">
+            <svg class="cell__glyph" aria-hidden="true"><use href="#i-gauge"/></svg>
+            <h3>Velocidade da página</h3>
+            <p>Teste no celular e o que está atrasando o carregamento para quem clica no anúncio.</p>
           </article>
-
-          <article class="cell cell--tiktok reveal">
-            <svg class="cell__glyph" role="img" aria-label="TikTok" viewBox="0 0 24 24"><use href="#b-tiktok"/></svg>
-            <h3>TikTok Ads</h3>
-            <p>Vídeos verticais pensados para prender a atenção nos três primeiros segundos.</p>
-          </article>
-
-          <article class="cell cell--landing reveal" style="--i:1">
-            <div class="cell__text">
-              <svg class="cell__glyph" aria-hidden="true"><use href="#i-browser"/></svg>
-              <h3>Landing pages</h3>
-              <p>Páginas leves, feitas em código, para o clique do anúncio virar conversa ou compra.</p>
-            </div>
-            <div class="cell__shot"><img src="imgs/velha-manna-catalogo.webp" alt="Catálogo de produtos do site do Ateliê Velha Manna" width="880" height="912" loading="lazy" decoding="async"></div>
-          </article>
-
-          <article class="cell cell--tracking reveal">
+          <article class="cell cell--c reveal">
             <svg class="cell__glyph" aria-hidden="true"><use href="#i-plugs-connected"/></svg>
-            <h3>Rastreamento e análise</h3>
-            <p>Instalação e auditoria para você saber quanto cada real investido devolve.</p>
-            <div class="tags"><span class="tag">GTM</span><span class="tag">GA4</span><span class="tag">Pixel</span><span class="tag">API de Conversões</span></div>
+            <h3>Rastreamento</h3>
+            <p>Se o Pixel, a API de Conversões e os eventos estão registrando cada contato e cada venda.</p>
           </article>
-
-          <article class="cell cell--wpp reveal" style="--i:1">
-            <svg class="cell__glyph" role="img" aria-label="WhatsApp" viewBox="0 0 24 24"><use href="#b-whatsapp"/></svg>
-            <h3>Automação no WhatsApp</h3>
-            <p>Mensagem de abertura personalizada e resposta automática para o lead não esfriar.</p>
+          <article class="cell cell--tint cell--d reveal" style="--i:1">
+            <svg class="cell__glyph" aria-hidden="true"><use href="#i-chart-line-up"/></svg>
+            <h3>Plano de ação</h3>
+            <p>O que corrigir primeiro, o que pode esperar e o que eu faria nos próximos 30 dias.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ========== MÉTODO ========== -->
-    <section class="section section--tint" id="metodo">
+    <!-- ========== 6. SOBRE: quem cuida da conta ========== -->
+    <section class="section" id="sobre">
+      <div class="wrap">
+        <div class="head reveal">
+          <h2>Quem cuida da sua conta</h2>
+          <p>Sou Iago Derik, gestor de tráfego e desenvolvedor. Você fala direto comigo do diagnóstico ao relatório, sem repasse para terceiros.</p>
+        </div>
+        <ul class="facts">
+          <li class="reveal">
+            <strong>Desde 2024</strong>
+            <p>Trabalho com dados, automação e análise de informação no setor financeiro.</p>
+          </li>
+          <li class="reveal" style="--i:1">
+            <strong>Análise e Desenvolvimento de Sistemas</strong>
+            <p>Graduação que sustenta a parte técnica: código, integrações e rastreamento.</p>
+          </li>
+          <li class="reveal" style="--i:2">
+            <strong>Feito por mim</strong>
+            <p>Páginas, eventos de conversão e automações são configurados por mim, não terceirizados.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== 7. PARA QUEM É ========== -->
+    <section class="section section--tint" id="para-quem">
+      <div class="wrap fit">
+        <div class="head reveal">
+          <h2>Para quem é</h2>
+          <p>O trabalho rende mais para negócios que já vendem e querem crescer com previsibilidade.</p>
+        </div>
+        <ul class="reveal">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Você já vende e quer aumentar a aquisição de clientes.</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Você depende do WhatsApp para fechar vendas.</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Seu produto ou serviço já está validado.</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Você quer transformar anúncios em um processo de aquisição mensurável.</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Você percebe que o site ou a landing page está limitando as campanhas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== 8. METODOLOGIA ========== -->
+    <section class="section" id="metodo">
       <div class="wrap method">
         <div>
           <div class="head reveal">
-            <h2>Quatro etapas, da auditoria à escala.</h2>
-            <p>Nada de subir anúncio no escuro: primeiro eu diagnostico, depois configuro, testo e só então aumento a verba.</p>
+            <h2>Cinco etapas, da auditoria à escala.</h2>
+            <p>Nada de subir anúncio no escuro: primeiro eu diagnostico, depois configuro, testo, otimizo e só então aumento a verba.</p>
           </div>
           <ol class="steps">
             <li class="reveal">
               <h3>Auditar</h3>
-              <p>Análise da conta, do produto, dos concorrentes e do site atual antes de gastar um centavo em anúncios.</p>
+              <p>Análise da conta, do produto, dos concorrentes e do site atual antes de gastar em anúncios.</p>
             </li>
             <li class="reveal">
-              <h3>Instalar o rastreamento</h3>
-              <p>Pixel, API de Conversões e GTM configurados, e definição do público com mais chance de comprar.</p>
+              <h3>Configurar</h3>
+              <p>Pixel, API de Conversões e GTM instalados, página ajustada e públicos definidos.</p>
             </li>
             <li class="reveal">
-              <h3>Testar criativos</h3>
-              <p>Orçamento controlado para descobrir qual mensagem gera o menor custo por lead qualificado.</p>
+              <h3>Testar</h3>
+              <p>Orçamento controlado para descobrir qual mensagem traz o menor custo por lead qualificado.</p>
             </li>
             <li class="reveal">
-              <h3>Escalar com margem</h3>
-              <p>Mais verba nos conjuntos vencedores, mantendo o ROAS e a margem sob controle.</p>
+              <h3>Otimizar</h3>
+              <p>Cortar o que não converte, melhorar a página e refinar os públicos com base nos dados.</p>
+            </li>
+            <li class="reveal">
+              <h3>Escalar</h3>
+              <p>Mais verba nos conjuntos vencedores, mantendo o retorno e a margem sob controle.</p>
             </li>
           </ol>
         </div>
@@ -763,130 +921,39 @@
           <ul>
             <li>
               <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+              <strong>Diagnóstico em até 48h</strong>
+              <p>Você recebe uma análise de campanhas, página e rastreamento antes de qualquer contrato.</p>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
               <strong>Verba direto nas plataformas</strong>
               <p>Você paga Meta, Google ou TikTok no seu cartão ou boleto. Nada passa por mim.</p>
             </li>
             <li>
               <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
               <strong>Relatórios semanais e mensais</strong>
-              <p>Custo por conversa, taxa de conversão, ROAS e o que muda na semana seguinte.</p>
+              <p>Custo por conversa, taxa de conversão, retorno e o que muda na semana seguinte.</p>
             </li>
             <li>
               <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
               <strong>Contato direto</strong>
               <p>Você fala pelo WhatsApp com quem gerencia a sua conta, sem fila de chamados.</p>
             </li>
-            <li>
-              <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
-              <strong>Código incluso</strong>
-              <p>Se a página travar ou o rastreamento falhar, eu corrijo.</p>
-            </li>
           </ul>
         </aside>
       </div>
     </section>
 
-    <!-- ========== CASES ========== -->
-    <section class="section" id="cases">
-      <div class="wrap">
-        <div class="head reveal">
-          <h2>Um case: o Ateliê Velha Manna</h2>
-          <p>Site completo com catálogo e pedido por WhatsApp, mais a gestão dos anúncios no Instagram e no Facebook.</p>
-        </div>
-
-        <div class="case">
-          <div class="case__shots reveal">
-            <figure>
-              <img src="imgs/velha-manna-inicio.webp" alt="Página inicial do site do Ateliê Velha Manna, com o catálogo dividido em seis categorias" width="644" height="824" loading="lazy" decoding="async">
-              <figcaption>Página inicial</figcaption>
-            </figure>
-            <figure>
-              <img src="imgs/velha-manna-catalogo.webp" alt="Catálogo de produtos do site do Ateliê Velha Manna" width="880" height="912" loading="lazy" decoding="async">
-              <figcaption>Catálogo interativo</figcaption>
-            </figure>
-          </div>
-
-          <div class="case__body reveal">
-            <h3>Site e anúncios trabalhando juntos</h3>
-            <p>Desenvolvi o site completo do ateliê em código leve, com a vitrine ligada ao catálogo de produtos e o botão de pedido no WhatsApp.</p>
-            <p>Em paralelo, estruturei os anúncios no Meta Ads (Instagram e Facebook), usando os vídeos artesanais para despertar desejo em futuras mães e familiares.</p>
-            <!-- TODO (resultados): só publicar números que estejam no Gerenciador de Anúncios. Formato sugerido:
-                 "Período: MM/AAAA a MM/AAAA. Conversas iniciadas: X. Custo por conversa: R$ Y." -->
-            <div class="chips">
-              <span class="chip">Futuras mães</span>
-              <span class="chip">Presentes afetivos</span>
-              <span class="chip">Quem ama artesanato</span>
-            </div>
-            <a class="link" href="https://velhamanna.vercel.app" target="_blank" rel="noopener noreferrer">
-              Acessar o site do projeto
-              <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== MODELOS ========== -->
-    <section class="section section--tint" id="planos">
-      <div class="wrap">
-        <div class="head reveal">
-          <h2>Três modelos de trabalho</h2>
-          <p>Escolha pela fase do negócio, da validação inicial à escala.</p>
-        </div>
-
-        <div class="plans">
-          <article class="plan plan--main reveal">
-            <span class="plan__label">Mais completo</span>
-            <h3>Combo Tráfego + Engenharia</h3>
-            <p>Do início ao fim: eu crio a sua página, configuro o rastreamento e gerencio o tráfego pago com foco em retorno.</p>
-            <ul class="checks">
-              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Landing page rápida, feita sob medida</li>
-              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>GTM Server-Side e Meta CAPI implementados</li>
-              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Campanhas completas no Meta, Google e TikTok</li>
-              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Otimização contínua de velocidade e conversão</li>
-            </ul>
-            <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="planos">
-              <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
-              Pedir diagnóstico
-            </a>
-          </article>
-
-          <div class="plans__rest">
-            <article class="plan reveal" style="--i:1">
-              <h3>Gestão de Tráfego Pago</h3>
-              <p>Para quem já tem site ou vende direto pelo WhatsApp e precisa de um fluxo constante de leads qualificados.</p>
-              <ul class="checks">
-                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Gestão de Meta Ads e Google Ads</li>
-                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Auditoria de públicos e palavras-chave</li>
-                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Relatórios semanais de desempenho</li>
-                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Testes contínuos de criativos</li>
-              </ul>
-            </article>
-            <article class="plan reveal" style="--i:2">
-              <h3>Landing Page &amp; Tracking</h3>
-              <p>Para quem já tem gestor ou agência, mas precisa resolver a página lenta e o rastreamento quebrado.</p>
-              <ul class="checks">
-                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Página em código limpo</li>
-                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Instalação de GA4 e GTM</li>
-                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Deduplicação de Pixel e API de Conversões</li>
-                <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Meta de carregamento abaixo de 2,5 s no celular (padrão "bom" do Google)</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== FAQ ========== -->
-    <section class="section" id="faq">
+    <!-- ========== 9. FAQ ========== -->
+    <section class="section section--tint" id="faq">
       <div class="wrap faq-grid">
         <div class="head reveal">
           <h2>Perguntas antes de começar</h2>
         </div>
         <div class="faq reveal">
           <details open>
-            <summary>Quanto preciso investir em anúncios no início?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-            <div class="answer">Dá para começar a validar com orçamentos enxutos, a partir de R$ 15 a R$ 25 por dia nas plataformas. Nas primeiras semanas o foco é coletar dados, validar mensagens e descobrir o custo por lead ideal antes de aumentar a verba. O valor é definido juntos no diagnóstico.</div>
+            <summary>Quanto preciso investir em anúncios?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <div class="answer">Depende do seu mercado, do objetivo e de quantos dados a campanha precisa para testar a oferta com segurança. No diagnóstico eu olho ticket, margem e concorrência e recomendo um valor inicial realista. A verba é paga direto às plataformas, na sua conta.</div>
           </details>
           <details>
             <summary>Por que um site rápido aumenta o lucro dos anúncios?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
@@ -894,31 +961,31 @@
           </details>
           <details>
             <summary>O que é a API de Conversões e por que ela importa?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-            <div class="answer">Bloqueadores de anúncio e as restrições de privacidade do iOS fazem o Pixel do navegador perder parte dos eventos de compra. A API de Conversões envia esses eventos direto do servidor para o Meta e o Google, o que ajuda o algoritmo a encontrar quem realmente compra e a baixar o custo.</div>
+            <div class="answer">Bloqueadores de anúncio e as restrições de privacidade do iOS fazem o Pixel do navegador perder parte dos eventos de compra. A API de Conversões envia esses eventos direto do servidor para o Meta e o Google, o que ajuda o algoritmo a encontrar quem realmente compra.</div>
           </details>
           <details>
             <summary>Como é feito o pagamento da verba dos anúncios?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-            <div class="answer">A verba é paga por você diretamente às plataformas (Meta Ads, Google Ads ou TikTok Ads), com o seu cartão ou boleto, na sua conta própria. Assim você mantém o histórico, os dados e o controle financeiro. Meus honorários de gestão são combinados à parte.</div>
+            <div class="answer">A verba é paga por você diretamente às plataformas (Meta Ads, Google Ads ou TikTok Ads), com o seu cartão ou boleto, na sua conta própria. Assim você mantém o histórico, os dados e o controle financeiro. Os honorários de gestão são combinados à parte.</div>
           </details>
           <details>
-            <summary>Em quanto tempo vejo os primeiros resultados?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-            <div class="answer">Normalmente as primeiras mensagens no WhatsApp começam a chegar de 48 a 72 horas depois da aprovação dos anúncios. A estabilização do ROAS e a queda do custo por aquisição levam de 2 a 4 semanas, período em que o algoritmo aprende.</div>
+            <summary>Em quanto tempo vejo resultados?<svg class="ico" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <div class="answer">Depende do nicho, da oferta, do orçamento, dos criativos e do público. As primeiras semanas servem para coletar dados e testar mensagens. A partir daí a otimização é contínua, e os relatórios semanais mostram o que mudou e o que vem em seguida.</div>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- ========== CTA FINAL ========== -->
-    <section class="section" id="agendar" style="padding-top:0">
+    <!-- ========== 10. CTA FINAL ========== -->
+    <section class="section" id="agendar">
       <div class="wrap">
         <div class="final reveal" data-watch>
           <div>
-            <h2>Vamos ver onde sua verba está vazando?</h2>
-            <p>Sem compromisso. Eu olho suas campanhas e a velocidade da sua página e mostro onde você perde vendas.</p>
+            <h2>Quer descobrir onde está perdendo vendas?</h2>
+            <p>Eu analiso suas campanhas, sua página e seu rastreamento e entrego o diagnóstico em até 48h. Sem compromisso.</p>
           </div>
           <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="final">
             <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
-            Pedir diagnóstico
+            Quero um diagnóstico
           </a>
         </div>
       </div>
@@ -928,7 +995,7 @@
   <footer class="footer">
     <div class="wrap footer__in">
       <div>
-        <img class="footer__logo" src="imgs/logo-full.webp" alt="Logotipo de Iago Derik, gestor de tráfego" width="720" height="617" loading="lazy" decoding="async">
+        <img class="footer__logo" src="imgs/logo-full.webp" alt="Logotipo de Iago Derik, gestor de tráfego e desenvolvedor web" width="480" height="480" loading="lazy" decoding="async">
         <a class="footer__mail" href="mailto:iagoderik.work@gmail.com">iagoderik.work@gmail.com</a>
       </div>
       <div class="social">
@@ -937,14 +1004,14 @@
         <a href="https://www.instagram.com/iago_derik/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram-logo"/></svg></a>
         <a href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-cta="footer"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg></a>
       </div>
-      <small>&copy; <span id="ano">2026</span> Iago Carvalho. Tráfego Pago &amp; Engenharia de Conversão Web/Mobile.</small>
+      <small>&copy; <span id="ano">2026</span> Deriks Work. Iago Derik, Tráfego Pago &amp; Engenharia Web.</small>
     </div>
   </footer>
 
   <div class="sticky" id="sticky">
     <a class="btn btn--primary" href="https://wa.me/message/LMMBVSDOUZGTO1" target="_blank" rel="noopener noreferrer" data-cta="sticky">
       <svg class="ico" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
-      Pedir diagnóstico
+      Quero um diagnóstico
     </a>
   </div>
 
