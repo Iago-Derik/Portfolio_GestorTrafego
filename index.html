@@ -369,13 +369,15 @@
 
     @media (min-width: 640px) {
       .hero__actions .btn--primary { flex: 0 0 auto; }
-      .hero__photo { aspect-ratio: 4 / 5; }
+      .hero__photo { aspect-ratio: 3 / 2; }
     }
     @media (min-width: 900px) {
       .hero__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
       .hero__fig { justify-self: end; width: 100%; max-width: 470px; }
       .hero__copy { padding-top: clamp(8px, 4.5vw, 64px); }
-      .trail { left: auto; right: calc(100% - 96px); bottom: 44px; width: 292px; padding: 14px 16px 12px; }
+      .hero__proof { max-width: 24rem; }
+      .hero__photo { aspect-ratio: 4 / 5; }
+      .trail { left: -28px; right: auto; bottom: 28px; width: 276px; padding: 14px 16px 12px; }
       .trail__top { display: flex; }
       .trail .dot--row { display: none; }
       .trail ol { height: auto; overflow: visible; }
@@ -387,6 +389,7 @@
       .trail li.is-done { opacity: 1; }
       .trail li.is-done .ico { opacity: 1; transform: none; }
     }
+    @media (min-width: 1240px) { .trail { left: auto; right: calc(100% - 96px); bottom: 44px; width: 292px; } }
 
     /* ============================================================
        LOGOS (só logos, sem legendas)
@@ -484,7 +487,7 @@
     .report__plan p, .report__plan .report__st { color: var(--on-deep-2); }
     .report__plan .report__st .ico { color: var(--on-deep); }
     @media (min-width: 860px) {
-      .report li { grid-template-columns: 3rem minmax(0, 4fr) minmax(0, 6fr) auto; align-items: baseline; gap: 0 28px; padding-block: 26px; }
+      .report li { grid-template-columns: 3rem minmax(0, 4fr) minmax(0, 6fr) 9.5rem; align-items: baseline; gap: 0 28px; padding-block: 26px; }
       .report h3 { font-size: 1.35rem; }
       .report p, .report__st { grid-column: auto; margin-top: 0; }
       .report__st { justify-self: end; }
